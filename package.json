@@ -1,6 +1,6 @@
 {
   "name": "budget-hq-reference-desktop",
-  "version": "0.9.155",
+  "version": "0.9.156",
   "private": true,
   "type": "module",
   "engines": {
@@ -13,7 +13,7 @@
     "test": "node --test test/*.test.mjs",
     "setup-mail": "node server/setup-mail.mjs",
     "phone": "node server/supervisor.mjs --sample --phone",
-    "start:no-live-restart": "node server/server.mjs",
+    "start:no-live-restart": "node server/server-local.mjs",
     "setup-phone": "node server/setup-phone.mjs",
     "phone-off": "node server/setup-phone.mjs --off",
     "migrate:hosted": "node server/migrate-hosted.mjs"
