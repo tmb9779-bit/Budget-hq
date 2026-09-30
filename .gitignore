@@ -15,3 +15,5 @@ backups/
 *.key
 *.pem
 *.vault
+.vercel
+.env*
