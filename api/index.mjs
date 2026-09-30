@@ -1,4 +1,5 @@
 import {createStore} from '../server/store-factory.mjs';
+import {storeNames} from '../server/config.mjs';
 
 const send=(res,status,data)=>{
   res.statusCode=status;
@@ -20,7 +21,7 @@ export default async function handler(req,res){
     const url=new URL(req.url,'https://budget-hq.invalid');
 
     if(req.method==='GET' && url.pathname==='/api/health'){
-      const store=createStore('budget');
+      const store=createStore(storeNames.budget);
       const budget=await store.get('budget',null);
 
       return send(res,200,{
