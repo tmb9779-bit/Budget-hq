@@ -12,25 +12,25 @@ import {createHash} from 'node:crypto';
 import {readFile} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 import {join,dirname} from 'node:path';
-import {PrivateStore} from './private-store.mjs';
+import {createStore} from './store-factory.mjs';
 import {createOwnerGate,jsonBody} from './owner-auth.mjs';
 import {BudgetService} from './service.mjs';
 import {migrate} from './migrate.mjs';
 import {fresh,eventsFor,incomeEvents,dateValid} from './model.mjs';
 import {fullSampleBudget as sampleBudget} from './sample.mjs';
 import {configDir,timeZone,storeNames,port} from './config.mjs';import {bringOverTrips} from './legacy-trips.mjs';
-const root=dirname(dirname(fileURLToPath(import.meta.url))),sampleMode=process.argv.includes('--sample'),store=new PrivateStore(join(configDir,sampleMode?storeNames.sampleBudget:storeNames.budget));
+const root=dirname(dirname(fileURLToPath(import.meta.url))),sampleMode=process.argv.includes('--sample'),store=createStore(sampleMode?storeNames.sampleBudget:storeNames.budget);
 const runningVersion=JSON.parse(await readFile(join(root,'package.json'),'utf8')).version;
 const service=await new BudgetService(store,async()=>{if(sampleMode)return sampleBudget();const book=fresh();book.settings.buffer=0;return book;}).init();
 const bankWebhookURL=webhookURL(process.env.BUDGET_HQ_PLAID_WEBHOOK_URL);
-const plaid=new PlaidConnection(new PrivateStore(join(configDir,sampleMode?storeNames.samplePlaid:storeNames.plaid)),{sample:sampleMode,webhook:bankWebhookURL});
+const plaid=new PlaidConnection(createStore(sampleMode?storeNames.samplePlaid:storeNames.plaid),{sample:sampleMode,webhook:bankWebhookURL});
 async function syncAccounts(action,body={}){const startedAt=Date.now(),result=await plaid[action](body);const report=await service.syncPlaidAccounts((await plaid.snapshots()).filter(i=>action==='refresh'||action==='check'&&i.id===body.id||action==='finish'&&(Date.parse(i.checkedAt)>=startedAt||i.error)));await store.put('account-sync-report',report);return {...result,accountSync:report};}
 const bankSchedule=new PlaidSchedule({store,refresh:()=>syncAccounts('refresh'),connected:async()=>{const s=await plaid.status();return s.configured&&s.items.length>0;},timeZone});
 const network=networkPolicy();
 // Phone access from anywhere via Tailscale (see remote-access.mjs). Off until setup-phone.mjs turns it on.
 const remote=remotePolicy(remoteConfigLoader(configDir)),originAllowed=req=>remote.isRemote(req)?remote.originAllowed(req):network.originAllowed(req);
 // Sign-ins are kept (encrypted) across server restarts, so an automatic update does not sign you out.
-const gate=createOwnerGate({originAllowed,secure:remote.secure,sessionStore:new PrivateStore(join(configDir,'owner-sessions'))});
+const gate=createOwnerGate({originAllowed,secure:remote.secure,sessionStore:createStore('owner-sessions')});
 const files={'/':'index.html','/index.html':'index.html','/app.js':'app.js','/styles.css':'styles.css','/trip-planner.js':'trip-planner.js','/scenario.js':'scenario.js','/workflow.js':'workflow.js','/login':'login.html','/login.js':'login.js'};
 files['/bank-matches.js']='bank-matches.js';files['/section-state.js']='section-state.js';files['/mobile.css']='mobile.css';
 files['/desktop-theme.css']='desktop-theme.css';files['/refined-expenses.css']='refined-expenses.css';
@@ -66,7 +66,7 @@ const server=createServer(async(req,res)=>{
   if(url.pathname.startsWith('/api/')){
    if(req.headers['x-budget-hq']!=='1'||!originAllowed(req)||req.headers['sec-fetch-site']==='cross-site'){send(403,{error:'Open Budget HQ directly.'});return;}
    if(req.method==='GET'){
-    if(url.pathname==='/api/mail/status')return send(200,{configured:!!(await new PrivateStore(join(configDir,'private-mail')).get('smtp'))});
+    if(url.pathname==='/api/mail/status')return send(200,{configured:!!(await createStore('private-mail').get('smtp'))});
     if(url.pathname==='/api/plaid/status')return send(200,{...await plaid.status(),webhook:{enabled:!!bankWebhookURL&&!sampleMode,pending:(await store.get('webhook-queue',[])).length,dropped:(await store.get('webhook-dropped',[])).slice(0,5)},schedule:await bankSchedule.status(),accountSync:await store.get('account-sync-report')});
     if(url.pathname==='/api/revision')return send(200,service.revision());
     if(url.pathname==='/api/live')return live.connect(req,res,{version:runningVersion,assets:assetsVersion,...service.revision()});
@@ -79,8 +79,8 @@ const server=createServer(async(req,res)=>{
     const body=await jsonBody(req,250000);
     const bankActions={'/api/plaid/configure':'configure','/api/plaid/start':'start','/api/plaid/finish':'finish','/api/plaid/check':'check','/api/plaid/disconnect':'disconnect','/api/plaid/refresh':'refresh'};
     if(bankActions[url.pathname]){const action=bankActions[url.pathname];return send(200,['finish','check','refresh'].includes(action)?await syncAccounts(action,body):await plaid[action](body));}
-    if(url.pathname==='/api/mail/test'){if(sampleMode)throw Error('Test email is unavailable in sample mode.');const config=await new PrivateStore(join(configDir,'private-mail')).get('smtp');if(!config)throw Error('Set up email sending first.');const recipient=String(body.email||service.envelope.book.settings.reviewEmail?.email||'').trim();await sendTestMail(config,recipient);return send(200,{accepted:true,recipient});}
-    if(url.pathname==='/api/mail/configure'){const config=validateMail(body);await new PrivateStore(join(configDir,'private-mail')).put('smtp',{host:config.host,from:config.from,user:config.user,password:config.password});service.mailStatus='SMTP configured · email reports follow your saved preferences';return send(200,{configured:true});}
+    if(url.pathname==='/api/mail/test'){if(sampleMode)throw Error('Test email is unavailable in sample mode.');const config=await createStore('private-mail').get('smtp');if(!config)throw Error('Set up email sending first.');const recipient=String(body.email||service.envelope.book.settings.reviewEmail?.email||'').trim();await sendTestMail(config,recipient);return send(200,{accepted:true,recipient});}
+    if(url.pathname==='/api/mail/configure'){const config=validateMail(body);await createStore('private-mail').put('smtp',{host:config.host,from:config.from,user:config.user,password:config.password});service.mailStatus='SMTP configured · email reports follow your saved preferences';return send(200,{configured:true});}
     if(url.pathname==='/api/product-photo')return send(200,await productPhoto(String(body.url||'')));
     if(url.pathname==='/api/write')return send(200,await service.write(body));
     if(url.pathname==='/api/backup')return send(200,await service.backup());
@@ -95,7 +95,7 @@ const server=createServer(async(req,res)=>{
 });
 server.listen(port,network.bind,()=>{console.log('Budget HQ Independent: http://localhost:'+port+' — Plaid account balances enabled; no spreadsheet dependency.');if(network.phone){console.log('Phone preview: sample budget only. Use trusted private Wi-Fi; keep this window open.');for(const ip of network.addresses)console.log('Open on your phone: http://'+ip+':'+port);if(!network.addresses.length)console.log('No private IPv4 address found. Connect the PC to your home Wi-Fi and restart.');}});
 server.on('error',e=>{console.error(e.code==='EADDRINUSE'?'Port '+port+' is in use. Stop the old Budget HQ server first.':e.message);process.exitCode=1;});
-async function dailyTasks(){await service.daily();const config=await new PrivateStore(join(configDir,'private-mail')).get('smtp'),book=service.envelope.book,data=service.read().summary;service.mailStatus='Monthly: '+await deliverMonthlyReview(store,book,data,config)+' · Yearly: '+await deliverYearlyReview(store,book,data,config);}
+async function dailyTasks(){await service.daily();const config=await createStore('private-mail').get('smtp'),book=service.envelope.book,data=service.read().summary;service.mailStatus='Monthly: '+await deliverMonthlyReview(store,book,data,config)+' · Yearly: '+await deliverYearlyReview(store,book,data,config);}
 const timer=setInterval(()=>dailyTasks().catch(()=>{service.mailStatus='Daily tasks failed; check local storage.';}),3600000);timer.unref();
 dailyTasks().catch(()=>{service.mailStatus='Daily tasks failed; check local storage.';});
 
