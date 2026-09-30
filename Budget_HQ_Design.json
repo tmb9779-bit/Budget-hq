@@ -1,0 +1,349 @@
+{
+  "version": 1,
+  "theme": {
+    "font": "Segoe UI",
+    "scale": 100,
+    "spacing": 100,
+    "radius": 18,
+    "icon": 100,
+    "background": "#F8F6F1",
+    "text": "#142D4E",
+    "accent": "#2F6FA3"
+  },
+  "pages": {},
+  "styles": {},
+  "icons": {},
+  "elements": {
+    "page:home:div.1-button.1-span.2": {
+      "states": {
+        "normal": {
+          "offsetY": -8,
+          "offsetX": 3
+        }
+      }
+    },
+    "page:home:div.1-button.1-span.0-svg.0": {
+      "states": {
+        "normal": {
+          "iconSize": 30,
+          "offsetY": -1
+        }
+      }
+    },
+    "dialog:delete-one-time-expense-permanently-:div.1-form.0-div.0-button.1": {
+      "states": {
+        "normal": {
+          "text": "#bc3249",
+          "background": "#fce7ea"
+        }
+      },
+      "label": "Delete"
+    },
+    "dialog:delete-one-time-expense-permanently-:div.0-div.0-h2.0": {
+      "states": {},
+      "label": "Permanently Delete Expense?"
+    },
+    "dialog:delete-recurring-bill-permanently-:div.1-form.0-div.0-button.1": {
+      "states": {
+        "normal": {
+          "background": "#fce7ea",
+          "text": "#bc3249"
+        }
+      },
+      "label": "Delete"
+    },
+    "dialog:delete-recurring-bill-permanently-:div.0-div.0-h2.0": {
+      "states": {},
+      "label": "Permanently Delete Bill?"
+    },
+    "dialog:delete-permanently-:div.1-form.0-div.0-button.1": {
+      "states": {
+        "normal": {
+          "background": "#fce7ea",
+          "text": "#bc3249"
+        }
+      },
+      "label": "Delete"
+    },
+    "dialog:delete-permanently-:div.0-div.0-h2.0": {
+      "states": {},
+      "label": "Permanently Delete?"
+    },
+    "dialog:delete-this-scheduled-payment-:div.1-form.0-div.0-button.1": {
+      "states": {
+        "normal": {
+          "text": "#bc3249",
+          "background": "#fce7ea"
+        }
+      },
+      "label": "Delete"
+    },
+    "dialog:delete-this-scheduled-payment-:div.0-div.0-h2.0": {
+      "states": {},
+      "label": "Delete This Scheduled Payment?"
+    },
+    "dialog:delete-this-paycheck-:div.1-form.0-div.0-button.1": {
+      "states": {
+        "normal": {
+          "background": "#fce7ea",
+          "text": "#bc3249"
+        }
+      },
+      "label": "Delete"
+    },
+    "dialog:delete-payments-linked:div.1-form.0-div.0-button.1": {
+      "states": {
+        "normal": {
+          "text": "#bc3249",
+          "background": "#fce7ea"
+        }
+      },
+      "label": "Delete"
+    },
+    "dialog:delete-payments-linked:div.0-div.0-h2.0": {
+      "states": {},
+      "label": "Delete Payment? "
+    },
+    "dialog:delete-payments:div.0-div.0-h2.0": {
+      "states": {},
+      "label": "Delete Payment?"
+    },
+    "dialog:delete-payments:div.1-form.0-div.0-button.1": {
+      "states": {
+        "normal": {
+          "background": "#fce7ea",
+          "text": "#bc3249"
+        }
+      }
+    },
+    "dialog:delete-transactions-received-paycheck:div.0-div.0-h2.0": {
+      "states": {},
+      "label": "Delete This Paycheck?"
+    },
+    "dialog:delete-transactions-received-paycheck:div.1-form.0-div.0-button.1": {
+      "states": {
+        "normal": {
+          "text": "#bc3249",
+          "background": "#fce7ea"
+        }
+      },
+      "label": "Delete"
+    },
+    "dialog:delete-transactions:div.0-div.0-h2.0": {
+      "states": {},
+      "label": "Delete This Transaction?"
+    },
+    "dialog:delete-transactions:div.1-form.0-div.0-button.1": {
+      "states": {
+        "normal": {
+          "text": "#bc3249",
+          "background": "#fce7ea"
+        }
+      },
+      "label": "Delete"
+    },
+    "dialog:delete-incomes:div.0-div.0-h2.0": {
+      "states": {},
+      "label": "Delete This Income Source?"
+    },
+    "dialog:delete-incomes:div.1-form.0-div.0-button.1": {
+      "states": {
+        "normal": {
+          "text": "#bc3249",
+          "background": "#fce7ea"
+        }
+      },
+      "label": "Delete"
+    },
+    "dialog:delete-sinking:div.0-div.0-h2.0": {
+      "states": {},
+      "label": "Delete This Sinking Fund?"
+    },
+    "dialog:delete-sinking:div.1-form.0-div.0-button.1": {
+      "states": {
+        "normal": {
+          "text": "#bc3249",
+          "background": "#fce7ea"
+        }
+      },
+      "label": "Delete"
+    },
+    "dialog:delete-goals:div.1-form.0-div.0-button.1": {
+      "states": {
+        "normal": {
+          "text": "#bc3249",
+          "background": "#fce7ea"
+        }
+      },
+      "label": "Delete"
+    },
+    "dialog:delete-goals:div.0-div.0-h2.0": {
+      "states": {},
+      "label": "Delete This Financial Goal?"
+    },
+    "dialog:delete-wishes:div.0-div.0-h2.0": {
+      "states": {},
+      "label": "Delete This Wish?"
+    },
+    "dialog:delete-wishes:div.1-form.0-div.0-button.1": {
+      "states": {
+        "normal": {
+          "text": "#bc3249",
+          "background": "#fce7ea"
+        }
+      },
+      "label": "Delete"
+    },
+    "dialog:delete-needs:div.0-div.0-h2.0": {
+      "states": {},
+      "label": "Delete This Need?"
+    },
+    "dialog:delete-needs:div.1-form.0-div.0-button.1": {
+      "states": {
+        "normal": {
+          "text": "#bc3249",
+          "background": "#fce7ea"
+        }
+      },
+      "label": "Delete"
+    },
+    "dialog:delete-accounts:div.0-div.0-h2.0": {
+      "states": {},
+      "label": "Delete This Account?"
+    },
+    "dialog:delete-accounts:div.1-form.0-div.0-button.1": {
+      "states": {
+        "normal": {
+          "text": "#bc3249",
+          "background": "#fce7ea"
+        }
+      },
+      "label": "Delete"
+    },
+    "dialog:delete-bills-one-time:div.0-div.0-h2.0": {
+      "states": {},
+      "label": "Delete This Expense?"
+    },
+    "dialog:delete-bills-one-time:div.1-form.0-div.0-button.1": {
+      "states": {
+        "normal": {
+          "background": "#fce7ea",
+          "text": "#bc3249"
+        }
+      },
+      "label": "Delete"
+    },
+    "dialog:delete-bills-recurring:div.1-form.0-div.0-button.1": {
+      "states": {
+        "normal": {
+          "text": "#bc3249",
+          "background": "#fce7ea"
+        }
+      },
+      "label": "Delete"
+    },
+    "dialog:delete-bills-recurring:div.0-div.0-h2.0": {
+      "states": {},
+      "label": "Delete This Bill?"
+    },
+    "shell:topbar:div.0-button.1": {
+      "states": {
+        "normal": {
+          "offsetY": -7
+        }
+      }
+    },
+    "page:plan:div.1": {
+      "states": {
+        "normal": {
+          "offsetY": 6
+        }
+      }
+    },
+    "dialog:plan-a-need:div.1-form.0-div.0-label.1": {
+      "states": {},
+      "label": "Your Expected Cost"
+    },
+    "page:home:div.0-button.1-span.2": {
+      "states": {
+        "normal": {
+          "text": "#bc3249",
+          "background": "#fce7ea",
+          "offsetY": -9,
+          "offsetX": 2
+        }
+      }
+    },
+    "page:settings-accounts-list:div.2-section.0-div.1-div.0-span.1": {
+      "states": {
+        "normal": {
+          "weight": 400
+        }
+      }
+    },
+    "page:settings-accounts-list:div.2-section.0-div.1-div.1-span.1": {
+      "states": {
+        "normal": {
+          "weight": 400
+        }
+      }
+    },
+    "page:settings-accounts-list:div.2-section.0-div.1-div.2-span.1": {
+      "states": {
+        "normal": {
+          "weight": 400
+        }
+      }
+    },
+    "page:settings-accounts-list:div.2-section.0-div.1-div.3-span.1": {
+      "states": {
+        "normal": {
+          "weight": 400
+        }
+      }
+    },
+    "page:settings-accounts-list:div.2-section.0-div.1-div.4-span.1": {
+      "states": {
+        "normal": {
+          "weight": 400
+        }
+      }
+    },
+    "page:settings-accounts-list:div.2-section.0-div.1-div.5-span.1": {
+      "states": {
+        "normal": {
+          "weight": 400
+        }
+      }
+    },
+    "page:settings-accounts-list:div.2-section.0-div.1-div.6-span.1": {
+      "states": {
+        "normal": {
+          "weight": 400
+        }
+      }
+    },
+    "page:settings-accounts-list:div.2-section.0-div.1-div.7-span.1": {
+      "states": {
+        "normal": {
+          "weight": 400
+        }
+      }
+    },
+    "page:settings-accounts-list:div.2-section.0-div.1-div.8-span.1": {
+      "states": {
+        "normal": {
+          "weight": 400
+        }
+      }
+    },
+    "shell:topbar:div.0-button.1-svg.0": {
+      "states": {
+        "normal": {
+          "offsetY": -1
+        }
+      }
+    }
+  },
+  "surface": "desktop"
+}

@@ -1,0 +1,514 @@
+/* Consistent controls and typography for the current Budget HQ workflows. */
+.reference-ui .modal .result,
+.reference-ui .modal .result strong,
+.reference-ui .modal[data-design-dialog="purchase-check"] .result * {
+  font-family: var(--sans, 'Segoe UI', Arial, sans-serif);
+}
+.reference-ui .goal-actions .goal-edit {
+  font-size: inherit;
+  font-weight: 650;
+  padding: 8px 14px;
+  min-height: 36px;
+}
+.reference-ui button[data-action="skip"],
+.reference-ui button[data-action="skipRecurring"],
+.reference-ui .modal[data-design-dialog^="skip"] button[type="submit"] {
+  color: #b92a40;
+  background: #ffedf0;
+  border-color: #f2b4bf;
+}
+.reference-ui button[data-action="skip"]:hover,
+.reference-ui button[data-action="skipRecurring"]:hover {
+  background: #ffe0e6;
+}
+.reference-ui .allocation-preview {
+  margin: 14px 0;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #f7fbff;
+}
+.reference-ui .allocation-preview .row:last-child { border-bottom: 0; }
+.reference-ui .recommended-goals { margin-top: 16px; }
+.reference-ui .recommended-goals .row { align-items: center; }
+.reference-ui .plan-reserved-note { color: var(--slate); font-size: 14px; }
+.reference-ui #modal[data-goal-type="debt"] {
+  width: min(560px, calc(100vw - 24px));
+}
+.reference-ui #modal[data-design-dialog="financial-goal"] #modal-body {
+  font-family: var(--sans, 'Segoe UI', Arial, sans-serif);
+}
+/* Current Cash Accounts uses blue artwork for Savings and the standard type colors. */
+.reference-ui .cash-accounts-dialog .dialog-account strong,
+.reference-ui .cash-accounts-dialog .dialog-account .amount { color: var(--ink); }
+.reference-ui .managed-accounts .dialog-account .amount { font-family: var(--sans); font-weight: 400; }
+.reference-ui .settings-stack { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
+.reference-ui .settings-stack .settings-panel-content { margin: 0 0 8px; min-width: 0; }
+.reference-ui .plaid-setup-actions { display: grid; gap: 0; border-block: 1px solid var(--line); margin-top: 16px; }
+.reference-ui .plaid-setup-actions > button, .reference-ui .plaid-setup-actions > details { border-bottom: 1px solid var(--line); padding-block: 12px; }
+.reference-ui .plaid-setup-actions > :last-child { border-bottom: 0; }
+.reference-ui .plaid-advanced > summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+.reference-ui .plaid-advanced > summary::-webkit-details-marker { display: none; }
+.reference-ui .plaid-advanced > button { margin: 12px 0; }
+.reference-ui .bank-actions { display: flex; flex-wrap: nowrap; align-items: center; gap: 7px; margin-left: auto; }
+.reference-ui .bank-actions button { white-space: nowrap; font-size: 13px; padding: 8px 10px; }
+.reference-ui .plaid-connection-row { align-items: start; }
+@media (max-width: 920px) { .reference-ui .plaid-connection-row { flex-wrap: wrap; } .reference-ui .bank-actions { margin-left: 0; width: 100%; overflow-x: auto; } }
+.reference-ui .income-variance { overflow-x: auto; }
+.reference-ui .income-variance table { min-width: 465px; table-layout: fixed; }
+.reference-ui .income-variance th, .reference-ui .income-variance td { width: 25%; text-align: center; }
+.reference-ui .income-remove { font-weight: 650; }
+.reference-ui .income-remove .ui-icon { width: 16px; height: 16px; vertical-align: -3px; }
+.reference-ui .income-source-list { display: grid; }
+.reference-ui .income-source-row { display: grid; grid-template-columns: 38px minmax(0,1fr) auto auto; align-items: center; gap: 12px 14px; padding: 15px 0; border-bottom: 1px solid var(--line); }
+.reference-ui .income-source-row:last-child { border-bottom: 0; }
+.reference-ui .income-source-copy { min-width: 0; display: grid; gap: 4px; }
+.reference-ui .income-source-copy strong { font-size: 15px; }
+.reference-ui .income-source-copy small { color: var(--slate); line-height: 1.4; }
+.reference-ui .income-source-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+.reference-ui .income-source-actions button.danger { background: transparent; border-color: transparent; box-shadow: none; color: var(--red-ink); font-weight: 650; }
+.reference-ui .income-method { display: flex; align-items: center; gap: 18px; border: 0; padding: 0; margin: 14px 0; }
+.reference-ui .income-method legend { font-weight: 650; margin-bottom: 8px; }
+.reference-ui .income-method label { display: inline-flex; align-items: center; gap: 7px; }
+.reference-ui .income-dismissed-link { padding-top: 10px; border-top: 1px solid var(--line); }
+/* Keep every dropdown hover highlight centered on its summary row. */
+.reference-ui :is(.timeline-summary,.unified-item-summary,.inline-debt>summary) { box-sizing: border-box; width: calc(100% + 20px); margin-left: -10px; margin-right: -10px; }
+@media (max-width: 920px) { .reference-ui .income-source-row { grid-template-columns: 32px minmax(0,1fr) auto; gap: 10px; } .reference-ui .income-source-actions { grid-column: 1 / -1; justify-self: end; } }
+.reference-ui #modal[data-design-dialog="goal-savings-by-paycheck"] table { min-width: 650px; table-layout: fixed; }
+.reference-ui #modal[data-design-dialog="goal-savings-by-paycheck"] th,
+.reference-ui #modal[data-design-dialog="goal-savings-by-paycheck"] td { overflow-wrap: normal; word-break: normal; hyphens: none; }
+.reference-ui #modal[data-design-dialog="goal-savings-by-paycheck"] th:nth-child(3),
+.reference-ui #modal[data-design-dialog="goal-savings-by-paycheck"] td:nth-child(3) { min-width: 120px; }
+.reference-ui #modal[data-design-dialog="goal-savings-by-paycheck"] #modal-body { overflow-x: auto; }
+/* All disclosure arrows share the Next 7 Days right-to-down motion. */
+.reference-ui details > summary { list-style: none; }
+.reference-ui details > summary::-webkit-details-marker { display: none; }
+.reference-ui details > summary .item-chevron,
+.reference-ui .settings-tile .item-chevron { display: inline-block; flex: none; background-image: none !important; color: var(--slate) !important; font-size: 21px; line-height: 1; transform: rotate(0deg); transition: transform .22s ease; }
+.reference-ui .settings-tile .item-chevron .ui-icon { display: none; }
+.reference-ui .settings-tile .item-chevron::after { content: '›'; }
+.reference-ui details[open] > summary .item-chevron,
+.reference-ui .settings-tile[aria-expanded="true"] .item-chevron { transform: rotate(90deg); }
+.reference-ui .tools-workspace details > summary > .tools-chevron { background-image: none !important; color: var(--slate) !important; font-size: 0; transform: rotate(0deg); transition: transform .22s ease; }
+.reference-ui .tools-workspace details > summary > .tools-chevron::after { content: '›'; font-size: 21px; }
+.reference-ui .tools-workspace details[open] > summary > .tools-chevron { transform: rotate(90deg); }
+.reference-ui .before-paycheck > summary .ui-icon { transform: rotate(-90deg); transition: transform .22s ease; }
+.reference-ui .before-paycheck[open] > summary .ui-icon { transform: rotate(0deg); }
+.reference-ui .calendar-event-dot.tone-blue { background: var(--blue-ink); }
+.reference-ui .calendar-event-dot.tone-mint { background: var(--mint-ink); }
+.reference-ui .calendar-event-dot.tone-lav { background: var(--lav-ink); }
+.reference-ui .calendar-event-dot.tone-gold { background: var(--gold-ink); }
+.reference-ui .calendar-event-dot.tone-rose { background: var(--rose-ink); }
+.reference-ui .calendar-event-dot.tone-indigo { background: var(--indigo-ink); }
+.reference-ui .calendar-event-dot.tone-peach { background: var(--peach-ink); }
+.reference-ui .calendar-event-dot.tone-slate { background: var(--slate); }
+.reference-ui .calendar-event-dot.tone-red { background: var(--red-ink); }
+.reference-ui .calendar-event-dot.tone-utility{background:var(--expense-utility,var(--gold-ink));}
+.reference-ui .calendar-event-dot.tone-grocery{background:var(--expense-grocery,var(--leaf-ink));}
+.reference-ui .calendar-event-dot.tone-car{background:var(--expense-car,var(--terracotta-ink));}
+.reference-ui .calendar-event-dot.tone-housing{background:var(--expense-housing,var(--denim-ink));}
+.reference-ui .calendar-event-dot.tone-medical{background:var(--expense-medical,var(--red-ink));}
+.reference-ui .calendar-event-dot.tone-entertainment{background:var(--expense-entertainment,var(--lav-ink));}
+.reference-ui .calendar-event-dot.tone-debt{background:var(--expense-debt,var(--indigo-ink));}
+.reference-ui .calendar-event-dot.tone-other{background:var(--expense-other,var(--gray-ink));}
+.reference-ui .calendar-event-dot.tone-vet{background:var(--expense-vet,var(--plum-ink));}
+.reference-ui .calendar-event-dot.tone-shopping{background:var(--expense-shopping,var(--rose-ink));}
+.reference-ui .calendar-event-dot.tone-travel{background:var(--expense-travel,var(--sky-ink));}
+.reference-ui .calendar-event-dot.tone-groceries{background:var(--expense-groceries,var(--leaf-ink));}
+.reference-ui .calendar-event-dot.tone-dining-out{background:var(--expense-dining-out,var(--peach-ink));}
+.reference-ui .calendar-event-dot.tone-utilities{background:var(--expense-utilities,var(--gold-ink));}
+.reference-ui .calendar-event-dot.tone-transportation{background:var(--expense-transportation,var(--terracotta-ink));}
+.reference-ui .calendar-event-dot.tone-insurance{background:var(--expense-insurance,var(--sky-ink));}
+.reference-ui .calendar-event-dot.tone-pets{background:var(--expense-pets,var(--plum-ink));}
+.reference-ui .calendar-event-dot.tone-personal-care{background:var(--expense-personal-care,var(--rose-ink));}
+.reference-ui .calendar-event-dot.tone-services{background:var(--expense-services,var(--denim-ink));}
+.reference-ui .calendar-event-dot.tone-education{background:var(--expense-education,var(--blue-ink));}
+.reference-ui .calendar-event-dot.tone-home-improvement{background:var(--expense-home-improvement,var(--terracotta-ink));}
+.reference-ui .calendar-event-dot.tone-donations{background:var(--expense-donations,var(--rose-ink));}
+.reference-ui .calendar-event-dot.tone-bank-fees{background:var(--expense-bank-fees,var(--gray-ink));}
+.reference-ui .calendar-event-dot.tone-taxes{background:var(--expense-taxes,var(--gray-ink));}
+.reference-ui .calendar-event-dot.tone-debt-payment{background:var(--expense-debt-payment,var(--indigo-ink));}
+.reference-ui details > summary:not(:has(.item-chevron,.tools-chevron,.ui-icon))::after { content: '›'; display: inline-block; color: var(--slate); font-size: 21px; line-height: 1; margin-left: auto; transform: rotate(0deg); transition: transform .22s ease; }
+.reference-ui details[open] > summary:not(:has(.item-chevron,.tools-chevron,.ui-icon))::after { transform: rotate(90deg); }
+.reference-ui .reference-options > summary:not(:has(.item-chevron,.tools-chevron,.ui-icon))::after { content: '›' !important; display: inline-block !important; }
+.reference-ui .income-estimate { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+.reference-ui .income-help { border: 0; background: transparent; color: var(--blue-ink); text-decoration: underline; font-size: 12px; padding: 3px; cursor: pointer; }
+@media (max-width: 650px) { .reference-ui .income-estimate { justify-content: flex-start; } }
+
+/* Calendar markers use the same foreground color as their event icon badges. */
+.reference-ui .calendar-event-dot.icon-badge { width: 8px; height: 8px; padding: 0; display: inline-block; background: currentColor !important; }
+
+/* Match Skipped Occurrences to the spacing used by the other expandable rows. */
+.reference-ui .compact-section > summary { display: flex; align-items: center; gap: 12px; width: 100%; list-style: none; }
+.reference-ui .compact-section > summary::-webkit-details-marker { display: none; }
+/* Keep the item type on Home's Next 7 Days rail light and close to its name. */
+.reference-ui .reference-week .item-copy>small { font-weight:400; margin-top:2px; line-height:1.4; }
+/* Linked debt schedules need less vertical space than full bill detail panels. */
+.reference-ui .calendar-page .unified-item[data-section-key^="item-debt-bill-"] > .item-options { padding-top: 3px; padding-bottom: 8px; }
+.reference-ui .calendar-page .unified-item[data-section-key^="item-debt-bill-"] > .item-options > p:first-child { margin: 0 0 6px; line-height: 1.35; }
+
+/* Disclosure arrows finish at the right edge of their tile. */
+.reference-ui details > summary { display:flex; align-items:center; gap:12px; width:100%; list-style:none; }
+.reference-ui details > summary::-webkit-details-marker { display:none; }
+.reference-ui details > summary > :is(.item-chevron,.tools-chevron,.safe-chevron) { margin-left:auto; justify-self:end; flex-shrink:0; }
+.reference-ui .settings-tile > .item-chevron { margin-left:auto; justify-self:end; flex-shrink:0; }
+.reference-ui .safe-section > summary > .money-line { flex:1; min-width:0; }
+.reference-ui .safe-section > summary > .safe-chevron { transform:rotate(-90deg); }
+.reference-ui .safe-section[open] > summary > .safe-chevron { transform:rotate(0deg); }
+.reference-ui .safe-reserved > summary .money-line strong::after { content:none; }
+.reference-ui .before-paycheck > summary > span:first-of-type { margin-left:auto; }
+.reference-ui .before-paycheck > summary > .item-chevron { margin-left:0; }
+.reference-ui .goal-show-all { display:flex; justify-content:center; padding-top:16px; }
+.reference-ui .goal-show-all button { width:auto; flex:none; border-radius:999px; padding:8px 16px; font-size:13px; }
+.reference-ui .goal-paycheck-table :is(th,td) { text-align:center; vertical-align:middle; }
+.reference-ui dialog.modal:has(.sinking-fund-paycheck-table) { width:min(720px,90vw); }
+.reference-ui .sinking-fund-paycheck-table>.scroll { overflow-x:auto; }
+.reference-ui .sinking-fund-paycheck-table table { min-width:0; table-layout:fixed; }
+.reference-ui .sinking-fund-paycheck-table th:nth-child(3) { min-width:145px; white-space:nowrap; }
+.reference-ui .sinking-fund-paycheck-table th:nth-child(3) span { white-space:nowrap; }
+.reference-ui .wish-complete-action { margin-top:12px; }
+.reference-ui .allocation-breakdown { margin-top:16px; padding:15px; border:1px solid var(--line); border-radius:14px; background:#f8fbfd; }
+.reference-ui .allocation-breakdown > p { margin:6px 0 12px; }
+.reference-ui .allocation-breakdown-group { display:flex; justify-content:space-between; gap:16px; border-top:1px solid var(--line); padding:12px 0 5px; }
+.reference-ui .allocation-breakdown .row { padding:7px 0 7px 18px; font-size:13px; }
+.reference-ui .allocation-breakdown .row:first-of-type { padding-left:0; }
+.reference-ui .calendar-page .unified-item[data-section-key^="item-debt-bill-"] > .item-options { padding-top:9px; }
+.reference-ui .calendar-page .unified-item[data-section-key^="item-debt-bill-"] > .item-options > p:first-child { margin:3px 0 6px; }
+.reference-ui .account-balance-details { padding:14px 16px; background:#f8fafc; border:1px solid #e3eaf0; border-radius:16px; }
+.reference-ui .account-balance-details h3 { margin:0 0 8px; font-size:15px; }
+.reference-ui .account-balance-details p { margin:8px 0 0; }
+
+/* Financial Goals stays visible inline in both Paycheck Allocation and Goals. */
+.reference-ui .financial-target-list { margin:8px 0 4px; }
+.reference-ui .financial-target-allocation-row { display:grid; grid-template-columns:34px minmax(0,1fr) auto; align-items:center; gap:11px; padding:10px 4px; border-top:1px solid var(--line); }
+.reference-ui .financial-target-allocation-row .icon-badge { width:32px; height:32px; }
+.reference-ui .financial-target-allocation-row > span { min-width:0; font-weight:600; }
+.reference-ui .financial-target-allocation-row small { display:block; color:var(--slate); font-weight:400; margin-top:3px; }
+.reference-ui .financial-target-allocation-row > b { font-variant-numeric:tabular-nums; }
+.reference-ui .paycheck-financial-goals { grid-column:1/-1; }
+.reference-ui .paycheck-financial-goals .financial-target-list { padding-left:14px; }
+.reference-ui .paycheck-financial-goals .financial-target-allocation-row { grid-template-columns:29px minmax(0,1fr) auto; padding:7px 4px; font-size:13px; }
+.reference-ui .paycheck-financial-goals .financial-target-allocation-row .icon-badge { width:26px; height:26px; }
+.reference-ui .paycheck-financial-goals .financial-target-allocation-row .ui-icon { width:16px; height:16px; }
+.reference-ui .financial-progress-list { display:grid; gap:12px; margin-top:16px; }
+.reference-ui .financial-progress-item { border:1px solid var(--line); border-radius:14px; padding:14px; }
+.reference-ui .financial-progress-item .goal-heading > div { display:grid; gap:3px; }
+.reference-ui .financial-progress-item .goal-heading small { color:var(--slate); font-weight:400; }
+.reference-ui .financial-progress-item progress { width:100%; margin:10px 0; }
+.reference-ui .financial-progress-values { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:7px; font-variant-numeric:tabular-nums; }
+.reference-ui .financial-progress-values > span:last-child { text-align:right; }
+.reference-ui .financial-progress-values small { display:block; color:var(--slate); font-variant-numeric:normal; margin-top:3px; }
+@media (max-width:650px) { .reference-ui .financial-target-allocation-row { gap:8px; } .reference-ui .paycheck-financial-goals .financial-target-list { padding-left:0; } }
+
+/* 0.9.78 approved Settings and paycheck layouts. */
+.reference-ui .settings-columns { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; align-items:start; }
+.reference-ui .settings-columns > div, .reference-ui .settings-columns .card { min-width:0; }
+.reference-ui .settings-columns .plaid-setup-actions { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; border:0; }
+.reference-ui .settings-columns .plaid-setup-actions > * { border:0; margin:0; }
+.reference-ui .recovery-columns { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+.reference-ui .recovery-columns .card { margin:0; }
+.reference-ui .recovery-actions { display:flex; flex-wrap:wrap; gap:10px; }
+.reference-ui .diagnostic-summary { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px 16px; margin:16px 0; }
+.reference-ui .diagnostic-row { display:grid; grid-template-columns:30px minmax(0,1fr) auto; gap:8px; align-items:center; padding:8px 0; border-bottom:1px solid var(--line); }
+.reference-ui .diagnostic-row .icon-badge { width:26px; height:26px; }
+.reference-ui .diagnostic-row strong { font-size:14px; }
+.reference-ui .diagnostic-ready > span:last-child { color:#18764f; }
+.reference-ui .diagnostic-review > span:last-child { color:#a34a17; }
+.reference-ui .report-toggle-row { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:10px 0; border-bottom:1px solid var(--line); }
+.reference-ui .report-switch { min-width:64px; border-radius:999px; padding:7px 14px; }
+.reference-ui .report-switch.is-on { color:#176b4b; background:#e8f5ee; border-color:#a9d8bf; }
+.reference-ui .financial-allocation-category { margin:5px 0; }
+.reference-ui .financial-allocation-category > .paycheck-allocation-row { margin:0; }
+.reference-ui .financial-allocation-category .financial-target-allocation-row { margin-left:38px; }
+@media (max-width:760px) { .reference-ui .settings-columns, .reference-ui .recovery-columns { grid-template-columns:minmax(0,1fr); } }
+@media (max-width:560px) { .reference-ui .diagnostic-summary { grid-template-columns:minmax(0,1fr); } .reference-ui .financial-allocation-category .financial-target-allocation-row { margin-left:8px; } }
+
+/* Keep the main navigation scrollable without showing a side scrollbar. */
+.reference-ui .sidebar { scrollbar-width:none; -ms-overflow-style:none; }
+.reference-ui .sidebar::-webkit-scrollbar { display:none; width:0; height:0; }
+
+/* Hide visible scrollbars throughout Budget HQ; scrolling remains available. */
+.reference-ui, .reference-ui * { scrollbar-width:none !important; -ms-overflow-style:none !important; }
+.reference-ui *::-webkit-scrollbar { display:none !important; width:0 !important; height:0 !important; }
+
+/* 0.9.79: vertical connection layout and dismissible warning controls. */
+.reference-ui .accounts-connections { grid-template-columns:minmax(0,1fr); }
+.reference-ui .settings-accounts-dropdown { padding:0 18px 16px; }
+.reference-ui .settings-accounts-summary { list-style:none; display:flex; align-items:center; gap:12px; min-height:58px; cursor:pointer; }
+.reference-ui .settings-accounts-summary::-webkit-details-marker { display:none; }
+.reference-ui .settings-accounts-summary > span:nth-child(2) { display:grid; gap:3px; flex:1; }
+.reference-ui .settings-accounts-summary b { color:var(--ink); font-size:17px; }
+.reference-ui .settings-accounts-summary small { color:var(--slate); font-size:13px; font-weight:400; }
+.reference-ui .settings-accounts-summary .item-chevron { font-size:22px; }
+.reference-ui .settings-accounts-dropdown[open] > .settings-accounts-summary { margin-bottom:8px; }
+.reference-ui .dismissible-banner { position:relative; padding-right:54px; }
+.reference-ui .dismissible-banner > .warning-dismiss { position:absolute; top:9px; right:10px; }
+.reference-ui .dismissible-warning { position:relative; padding-right:48px !important; }
+.reference-ui .dismissible-warning > .warning-dismiss { position:absolute; top:8px; right:8px; }
+.reference-ui .warning-note { position:relative; display:flex; align-items:center; gap:8px; padding:8px 42px 8px 10px; margin:6px 0; border:1px solid #f0c7cf; border-radius:10px; background:#fff3f5; color:var(--red-ink,#a12f40); }
+.reference-ui .warning-note > :first-child { margin:0; }
+.reference-ui .warning-note > .warning-dismiss { position:absolute; top:4px; right:4px; }
+.reference-ui .warning-dismiss { display:grid; place-items:center; width:30px; height:30px; min-width:30px; padding:4px; border:0; border-radius:50%; background:transparent; color:#a42c3e; }
+.reference-ui .warning-dismiss:hover { background:#ffe2e7; }
+.reference-ui .warning-dismiss .ui-icon { width:16px; height:16px; }
+.reference-ui .attention-item { position:relative; min-width:0; height:100%; }
+.reference-ui .attention-item > .attention-card { width:100%; }
+.reference-ui .attention-item > .warning-dismiss { position:absolute; z-index:2; top:8px; right:8px; }
+.reference-ui .attention-item .attention-resolve { position:static; display:block; margin-top:12px; font-size:12px; color:var(--blue-ink); }
+.reference-ui .attention-item .attention-resolve::after { content:none; display:none; }
+.reference-ui .calendar-grid .day:hover,.reference-ui .calendar-grid .day:focus-within { background:#eaf3fb;box-shadow:inset 0 0 0 2px #8eb9da;border-radius:10px; }
+.reference-ui .calendar-grid .day.selected { background:#dcecf9;box-shadow:inset 0 0 0 2px #4c92c5;border-radius:10px; }
+.reference-ui .dismissed-recurring > summary + .row { margin-top:9px;padding-top:0; }
+.reference-ui .transaction-tool-block + .transaction-tool-block { border-top:1px solid var(--line);margin-top:18px;padding-top:18px; }
+.reference-ui .transaction-tool-block h3 { margin:0 0 8px;font-size:17px; }
+.reference-ui .transaction-tool-block p { margin:0 0 12px;color:var(--slate); }
+.reference-ui .recovery-main-actions { justify-content:flex-start;gap:10px; }
+.reference-ui .system-health > summary { display:flex;align-items:center;gap:12px;list-style:none;cursor:pointer;min-height:58px; }
+.reference-ui .system-health > summary::-webkit-details-marker { display:none; }
+.reference-ui .system-health > summary > span:nth-child(2) { display:grid;gap:3px;flex:1; }
+.reference-ui .system-health > summary b { color:var(--ink);font-size:17px; }
+.reference-ui .system-health > summary small { color:var(--slate);font-size:13px; }
+.reference-ui .system-health-details { border-top:1px solid var(--line);margin-top:12px;padding-top:14px; }
+.reference-ui .system-health-details > p:first-child { margin-top:0; }
+.reference-ui .recurring-bill-row { display:grid;grid-template-columns:38px minmax(0,1fr) auto auto;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--line); }
+.reference-ui .recurring-bill-row:last-child { border-bottom:0; }
+.reference-ui .recurring-bill-row strong,.reference-ui .recurring-bill-row small { display:block; }
+.reference-ui .recurring-bill-row small { margin-top:4px;color:var(--slate); }
+@media(max-width:760px) { .reference-ui .recurring-bill-row { grid-template-columns:32px minmax(0,1fr) auto; } .reference-ui .recurring-bill-row > .actions { grid-column:2/-1;justify-content:flex-end; } }
+.reference-ui .error-notice { display:flex; align-items:center; gap:12px; }
+.reference-ui .error-notice > span { flex:1; }
+
+/* Plaid is an icon-led expandable tile; only its bank warnings are dismissible. */
+.reference-ui .settings-plaid-dropdown { padding:0 18px 16px; }
+.reference-ui .settings-plaid-summary,.reference-ui .settings-accounts-summary { display:flex; align-items:center; gap:12px; min-height:62px; cursor:pointer; list-style:none; }
+.reference-ui .settings-plaid-summary::-webkit-details-marker,.reference-ui .settings-accounts-summary::-webkit-details-marker { display:none; }
+.reference-ui .settings-plaid-summary > span:nth-child(2),.reference-ui .settings-accounts-summary > span:nth-child(2) { display:grid; gap:3px; flex:1; }
+.reference-ui .settings-plaid-summary b,.reference-ui .settings-accounts-summary b { color:var(--ink); font-size:17px; }
+.reference-ui .settings-plaid-summary small,.reference-ui .settings-accounts-summary small { color:var(--slate); font-size:13px; font-weight:400; }
+.reference-ui .settings-plaid-summary .connection-status { vertical-align:middle; }
+.reference-ui .settings-plaid-summary .connection-import-note { margin-left:8px; }
+.reference-ui .settings-plaid-dropdown[open] > .settings-plaid-summary,.reference-ui .settings-accounts-dropdown[open] > .settings-accounts-summary { margin-bottom:8px; }
+.reference-ui .settings-plaid-dropdown .plaid-accordion-content { border-top:1px solid var(--line); padding-top:12px; }
+.reference-ui .settings-accounts-dropdown { position:relative; padding:0 18px 16px; }
+.reference-ui .settings-accounts-summary { padding-right:148px; }
+.reference-ui .settings-accounts-summary .item-chevron { position:absolute; right:126px; }
+.reference-ui .account-add-top { position:absolute; right:16px; top:12px; padding:8px 12px; border:1px solid #d8e5ee; border-radius:999px; background:#f2f8fc; color:var(--blue-ink); font-size:13px; white-space:nowrap; }
+.reference-ui .account-add-top:hover { background:#e8f3fa; }
+.reference-ui .timeline-summary { grid-template-columns:56px 1px 38px minmax(0,1fr) auto 18px; column-gap:11px; }
+.reference-ui .warning-dismiss { border:0; border-radius:0; background:transparent; box-shadow:none; }
+.reference-ui .warning-dismiss:hover,.reference-ui .warning-dismiss:focus-visible { border-radius:0; background:transparent; box-shadow:none; opacity:.68; }
+.reference-ui .warning-note > .warning-dismiss { right:8px; }
+.reference-ui .topbar-actions { display:flex; align-items:center; justify-content:flex-end; gap:12px; margin-left:auto; padding-right:8px; }
+.reference-ui .topbar-actions .header-plaid { position:static; left:auto; flex:0 0 124px; width:124px; display:flex; align-items:center; justify-content:center; margin:0; padding:0; animation:none!important; transition:none!important; transform:none!important; }
+.reference-ui .topbar-actions .header-plaid .connection-status { min-width:104px; box-sizing:border-box; justify-content:center; animation:none!important; transition:none!important; }
+/* Header placement is structural, not a design-editor offset. Longhand translate must also be neutralized. */
+.reference-ui .topbar-actions #header-plaid, .reference-ui .topbar-actions #header-plaid .connection-status { translate:none!important; }
+.reference-ui .settings-plaid-dropdown { padding:0; }
+.reference-ui .settings-accounts-dropdown { padding:0 18px 16px; }
+.reference-ui .settings-accounts-summary { min-height:62px; }
+.reference-ui .settings-accounts-dropdown[open] > .settings-accounts-summary { margin-bottom:8px; }
+.reference-ui .timeline-summary { column-gap:7px; }
+@media (max-width:600px) {
+ .reference-ui .settings-accounts-dropdown { padding-inline:12px; }
+ .reference-ui .settings-accounts-summary { padding-right:130px; }
+ .reference-ui .settings-accounts-summary .item-chevron { right:112px; }
+ .reference-ui .account-add-top { right:10px; padding:7px 9px; font-size:12px; }
+ .reference-ui .settings-plaid-summary,.reference-ui .settings-accounts-summary { gap:8px; }
+ .reference-ui .topbar-actions { gap:7px; padding-right:5px; }
+}
+@media (max-width:980px) { .reference-ui .timeline-summary { column-gap:5px; } }
+@media (max-width:760px) { .reference-ui .settings-accounts-dropdown { padding-inline:12px; } }
+/* Keep the global bank status beside the refresh control at every viewport width. */
+.reference-ui .topbar-actions { flex-wrap:nowrap!important; white-space:nowrap; }
+.reference-ui .topbar-actions .header-plaid { flex-shrink:0; min-height:36px; height:36px; }
+.reference-ui .topbar-actions .header-plaid .connection-status { white-space:nowrap; }
+.reference-ui .reference-goal-top { grid-template-columns:repeat(4,minmax(0,1fr)); }
+.reference-ui .reference-goal-top>.kpi:nth-child(2) { background:linear-gradient(125deg,#fff,#fff7e9)!important; }
+.reference-ui .reference-goal-top>.kpi:nth-child(2)>.icon-badge { background:#fff0de!important; color:#8b5b25!important; }
+.reference-ui .reference-goal-top>.kpi:nth-child(3) { background:linear-gradient(125deg,#fff,#eaf4fc)!important; }
+
+/* Accounts lead the Settings page; Plaid remains an icon-led disclosure beneath it. */
+.reference-ui .settings-accounts-summary { padding-right:0!important; }
+.reference-ui .settings-accounts-summary .item-chevron { position:static!important; margin-left:auto; }
+.reference-ui .account-add-bottom { display:block; width:calc(100% - 12px); min-height:43px; margin:12px auto 0; padding:10px 12px; border-radius:10px; font-size:13px; white-space:nowrap; }
+.reference-ui .settings-plaid-dropdown { padding:0 18px 14px; }
+.reference-ui .settings-plaid-summary { padding:0; }
+.reference-ui .settings-plaid-summary .icon-badge { flex:none; }
+.reference-ui .settings-plaid-summary .item-chevron { margin-left:auto; }
+.reference-ui .settings-plaid-dropdown .plaid-accordion-content { border-top:1px solid var(--line); padding-top:12px; }
+.reference-ui .settings-plaid-dropdown .plaid-setup-actions { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; border:0; margin-top:16px; }
+.reference-ui .settings-plaid-dropdown .plaid-setup-actions > button { min-width:0; border:1px solid var(--line); border-radius:10px; padding:10px 12px; white-space:normal; }
+.reference-ui .settings-plaid-dropdown .plaid-session .actions { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+.reference-ui .settings-plaid-dropdown .plaid-session .actions > button { min-width:0; min-height:43px; border:1px solid var(--line); border-radius:10px; padding:10px 12px; white-space:normal; }
+@media (max-width:420px) { .reference-ui .settings-plaid-dropdown .plaid-setup-actions,.reference-ui .settings-plaid-dropdown .plaid-session .actions { grid-template-columns:1fr; } .reference-ui .account-add-bottom { width:calc(100% - 4px); } }
+.reference-ui .settings-tabs { margin-top:4px!important; margin-bottom:6px!important; padding-bottom:6px!important; gap:12px!important; }
+.reference-ui .accounts-connections { gap:3px; }
+.reference-ui .accounts-connections > .settings-accounts-dropdown,
+.reference-ui .accounts-connections > .settings-plaid-dropdown { margin-top:0; }
+/* Use one consistent 18px card rhythm across every Settings section. */
+.reference-ui[data-page="settings"] .settings-stack { gap:18px; }
+.reference-ui[data-page="settings"] .settings-stack > .section.card { margin-top:0; }
+.reference-ui[data-page="settings"] .recovery-columns { gap:18px; }
+.reference-ui[data-page="settings"] #content > .section.card + .section.card { margin-top:18px; }
+.reference-ui .reference-goal-top>.kpi:nth-child(3)>.icon-badge { background:#e6f2fc!important; color:#21587f!important; }
+.reference-ui .reference-goal-top>.kpi:nth-child(4) { background:linear-gradient(125deg,#fff,#f3effb)!important; }
+.reference-ui .reference-goal-top>.kpi:nth-child(4)>.icon-badge { background:#eee7fb!important; color:#67429b!important; }
+@media(max-width:980px) { .reference-ui .reference-goal-top { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:570px) { .reference-ui .reference-goal-top { grid-template-columns:1fr; } }
+
+/* Goals page KPI cards match the Home four-card sizing and follow the chosen tile order. */
+.reference-ui .reference-goal-top { grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; }
+.reference-ui .reference-goal-top>.kpi { display:flex; align-items:center; gap:10px; min-height:100px; padding:12px; }
+.reference-ui .reference-goal-top>.kpi>.icon-badge { float:none; flex-shrink:0; width:36px; height:36px; margin:0; }
+.reference-ui .reference-goal-top .kpi-copy { display:block; min-width:0; }
+.reference-ui .reference-goal-top .label { min-height:0; font-size:12px; line-height:1.25; }
+.reference-ui .reference-goal-top .value { clear:none; margin:4px 0 3px; font-size:23px; line-height:1.12; overflow-wrap:anywhere; }
+.reference-ui .reference-goal-top small { font-size:11px; line-height:1.25; }
+.reference-ui .reference-goal-top>.kpi:nth-child(2) { background:linear-gradient(125deg,#fff,#f3effb)!important; }
+.reference-ui .reference-goal-top>.kpi:nth-child(2)>.icon-badge { background:#eee7fb!important; color:#67429b!important; }
+.reference-ui .reference-goal-top>.kpi:nth-child(3) { background:linear-gradient(125deg,#fff,#eaf4fc)!important; }
+.reference-ui .reference-goal-top>.kpi:nth-child(3)>.icon-badge { background:#e6f2fc!important; color:#21587f!important; }
+.reference-ui .reference-goal-top>.kpi:nth-child(4) { background:linear-gradient(125deg,#fff,#fff7e9)!important; }
+.reference-ui .reference-goal-top>.kpi:nth-child(4)>.icon-badge { background:#fff0de!important; color:#8b5b25!important; }
+@media(max-width:980px) { .reference-ui .reference-goal-top { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:600px) { .reference-ui .reference-goal-top>.kpi { display:flex; align-items:center; gap:8px; min-height:88px; padding:10px; } .reference-ui .reference-goal-top>.kpi>.icon-badge { width:32px; height:32px; } .reference-ui .reference-goal-top .value { font-size:19px; } .reference-ui .reference-goal-top .label { font-size:11px; } .reference-ui .reference-goal-top small { font-size:10px; } }
+
+/* The shared Next Target selection, not list position, controls the gold halo. */
+.reference-ui .reference-goal[data-target-card] { transition:box-shadow .22s ease, transform .22s ease, opacity .22s ease; box-shadow:0 0 0 1px #f4eddd,0 0 7px #dfb84a18; }
+.reference-ui .reference-goal[data-target-card].is-next-target { box-shadow:0 0 0 1px #e5c46d,0 0 22px 4px #d7aa3560; }
+.reference-ui .target-drag-handle { border:0; background:transparent; color:#8493a0; font-size:22px; line-height:1; padding:0 4px; cursor:grab; touch-action:none; }
+.reference-ui .target-drag-handle:active { cursor:grabbing; }
+.reference-ui .target-dragging { opacity:.55; transform:scale(.99); }
+.reference-ui .target-drop-hint { outline:2px dashed #7bb3d9; outline-offset:3px; }
+.reference-ui .next-target-overview { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; margin:12px 0 18px; }
+.reference-ui .next-target-overview-row { display:grid; gap:4px; padding:11px 12px; border:1px solid var(--line); border-radius:12px; background:#fff; }
+.reference-ui .next-target-overview-row span { color:var(--slate); font-size:12px; }
+.reference-ui .next-target-overview-row b { font-size:16px; }
+.reference-ui .next-target-overview-row small { color:var(--slate); font-size:11px; }
+.reference-ui .next-target-goal-total { background:#f8f5ff; }
+.reference-ui .next-target-paycheck h4 { margin:10px 0; }
+@media(max-width:600px) { .reference-ui .next-target-overview { grid-template-columns:1fr; } }
+
+/* Income and Plan explanation rows share clear labels and keyboard affordances. */
+.reference-ui .income-plan-amount { display: grid; justify-items: end; gap: 4px; min-width: 0; }
+.reference-ui .income-plan-amount small { color: var(--slate); font-size: 12px; }
+.reference-ui .forecast-reconciliation { margin-top: 16px; padding: 12px 16px; border: 1px solid var(--line); border-radius: 14px; }
+.reference-ui .forecast-reconciliation > summary { cursor: pointer; color: var(--ink); font-weight: 650; padding: 4px 0; }
+.reference-ui .forecast-reconciliation > summary:focus-visible { outline: 2px solid var(--blue-ink); outline-offset: 4px; border-radius: 4px; }
+.reference-ui .forecast-reconciliation[open] > summary { margin-bottom: 8px; }
+.reference-ui .forecast-reconciliation .row { gap: 12px; }
+.reference-ui .forecast-reconciliation .row .actions { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.reference-ui .forecast-reconciliation > p { color: var(--slate); line-height: 1.5; }
+@media (max-width: 600px) { .reference-ui .income-source-row { grid-template-columns: 32px minmax(0,1fr); } .reference-ui .income-plan-amount { grid-column: 2; justify-items: start; } .reference-ui .income-source-actions { justify-self: stretch; justify-content: flex-start; } }
+
+/* Keep the centered page and its connection badge stable across short and long pages. */
+html { scrollbar-gutter: stable; }
+.reference-ui .topbar-actions { min-width: 184px; }
+.reference-ui .topbar-actions .header-plaid { flex: 0 0 124px; }
+/* Selected day creation is the primary action; secondary actions stay muted. */
+.reference-ui .day-details .day-add > .primary { background: var(--blue-ink); border-color: var(--blue-ink); color: #fff; border-radius: 999px; padding: 10px 18px; }
+.reference-ui .forecast-check-summary { display:flex; align-items:center; gap:12px; padding:5px 0; }
+.reference-ui .forecast-check-summary strong,.reference-ui .forecast-check-summary small { display:block; }
+.reference-ui .forecast-check-summary small { color:var(--slate); margin-top:4px; line-height:1.4; }
+.reference-ui .forecast-reconciliation .row:last-of-type { font-weight:700; border-top:2px solid var(--line); }
+.reference-ui .reference-debt-row { box-sizing:border-box; width:100%; padding-right:20px; }
+.reference-ui .reference-debt-row > .item-chevron { justify-self:end; margin-right:2px; }
+.reference-ui .debt-group-title span { font-weight:700; font-variant-numeric:tabular-nums; color:var(--ink); }
+.reference-ui .income-forecast-settings { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; padding:14px 18px; border:1px solid var(--line); border-radius:16px; background:#fffefd; box-shadow:var(--shadow); margin-top:18px; }
+.reference-ui .income-forecast-settings strong,.reference-ui .income-forecast-settings small { display:block; }
+.reference-ui .income-forecast-settings small { color:var(--slate); margin-top:4px; }
+.reference-ui details.income-source-row { display:block; border:0; border-bottom:1px solid var(--line); border-radius:0; margin:0; padding:0; background:transparent; }
+.reference-ui .income-source-summary { display:grid; grid-template-columns:38px minmax(0,1fr) auto 18px; align-items:center; gap:12px; padding:15px 2px; list-style:none; border-radius:12px; }
+.reference-ui .income-source-summary:hover,.reference-ui .income-source-summary:focus-visible { background:#eef5fb; }
+.reference-ui .income-source-summary::-webkit-details-marker { display:none; }
+.reference-ui .income-source-row[open] .item-chevron { transform:rotate(90deg); }
+.reference-ui .income-source-details { display:grid; gap:8px; padding:0 4px 16px 50px; }
+.reference-ui .income-source-details > small { color:var(--slate); line-height:1.4; }
+.reference-ui .income-source-actions { justify-content:flex-end; }
+.reference-ui .goal-savings-explanation { color:var(--slate); }
+.reference-ui .goal-target-preview { font-weight:700; color:var(--ink); background:#f1f7fc; border-radius:12px; padding:10px 12px; }
+.reference-ui .backup-tiles > div { display:grid; align-content:start; gap:6px; }
+.reference-ui .backup-tiles small { color:var(--slate); line-height:1.4; }
+.reference-ui .empty-recovery { margin:0; }
+.reference-ui .report-switch { display:inline-flex; align-items:center; gap:8px; border:0; background:transparent; box-shadow:none; padding:5px; }
+.reference-ui .report-switch .switch-track { display:inline-flex; align-items:center; width:43px; height:25px; padding:3px; box-sizing:border-box; border-radius:99px; background:#a9b4bd; transition:background .2s; }
+.reference-ui .report-switch .switch-dot { width:19px; height:19px; background:#fff; border-radius:50%; box-shadow:0 1px 3px #0002; transition:transform .2s; }
+.reference-ui .report-switch.is-on .switch-track { background:var(--blue-ink); }
+.reference-ui .report-switch.is-on .switch-dot { transform:translateX(18px); }
+.reference-ui .report-switch:focus-visible { outline:2px solid var(--blue-ink); outline-offset:2px; border-radius:8px; }
+@media(max-width:600px) { .reference-ui .topbar-actions { min-width:0; } .reference-ui .income-source-summary { grid-template-columns:32px minmax(0,1fr) 18px; } .reference-ui .income-source-summary .income-plan-amount { grid-column:2; grid-row:2; justify-items:start; } .reference-ui .income-source-summary .item-chevron { grid-column:3; grid-row:1/3; } .reference-ui .income-source-details { padding-left:8px; } }
+
+/* Anchor the bank status and refresh control to one fixed header slot. */
+.reference-ui .topbar { position:relative; padding-right:184px; box-sizing:border-box; }
+.reference-ui .topbar-actions { position:absolute; right:0; top:50%; transform:translateY(-50%); width:184px; min-width:184px; box-sizing:border-box; }
+@media(max-width:600px) {
+ .reference-ui .topbar { padding-right:169px; }
+ .reference-ui .topbar-actions { width:169px; min-width:169px; }
+}
+
+/* Keep the four Tools destinations visible while the primary menu scrolls. */
+@media(min-width:981px) {
+ .reference-ui .sidebar { height:calc(100dvh - 32px); min-height:0; overflow:hidden; }
+ .reference-ui #navigation { flex:1 1 auto; min-height:0; overflow-y:auto; overscroll-behavior:contain; scrollbar-width:none; }
+ .reference-ui #navigation::-webkit-scrollbar { display:none; }
+ .reference-ui .side-tools { flex:0 0 auto; margin-top:12px; padding-top:12px; }
+ .reference-ui .sidebar-footer { flex:0 0 auto; margin-top:8px; padding-top:8px; }
+}
+
+.reference-ui .goal-savings-explanation { grid-column:1/-1; }
+.reference-ui .reference-debt-row { width:calc(100% + 20px); padding-right:30px; }
+.reference-ui .reference-debt-row > .item-chevron { margin-right:8px; }
+.reference-ui .report-switch.is-on { background:transparent; color:var(--ink); border-color:transparent; }
+
+/* Income amounts line up in a single column at every width. */
+.reference-ui .income-source-summary { grid-template-columns:38px minmax(0,1fr) minmax(112px,auto) 18px; }
+.reference-ui .income-plan-amount { justify-self:end; justify-items:end; font-variant-numeric:tabular-nums; }
+.reference-ui .income-plan-amount .amount-bubble { min-width:105px; text-align:center; box-sizing:border-box; }
+@media(max-width:600px) {
+ .reference-ui .income-source-summary { grid-template-columns:32px minmax(0,1fr) minmax(88px,auto) 16px; gap:7px; }
+ .reference-ui .income-source-summary .income-plan-amount { grid-column:3; grid-row:1; justify-self:end; justify-items:end; }
+ .reference-ui .income-plan-amount .amount-bubble { min-width:88px; }
+ .reference-ui .income-source-summary .item-chevron { grid-column:4; grid-row:1; }
+}
+/* Keep debt chevrons inset with a compact hit box centered on the account name. */
+.reference-ui .reference-debt-row { width:100%; padding-right:74px!important; }
+.reference-ui .reference-debt-row > .item-chevron { box-sizing:border-box; display:flex; align-items:center; justify-content:center; width:18px; height:18px; line-height:18px; grid-column:-1; grid-row:1; align-self:center; justify-self:center; position:relative; left:-8px; margin:0; }
+@media(max-width:600px) { .reference-ui .reference-debt-row { padding-right:34px!important; } .reference-ui .reference-debt-row > .item-chevron { left:-4px; } }
+/* Data & Recovery keeps related actions in three cards. */
+.reference-ui .recovery-backup-action,.reference-ui .recovery-history { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:15px 16px; background:#f2f9f7; border-radius:13px; }
+.reference-ui .recovery-history { background:#fff; border:1px solid var(--line); }
+.reference-ui .recovery-backup-action small,.reference-ui .recovery-history small,.reference-ui .recovery-export-grid small { display:block; color:var(--slate); line-height:1.4; }
+.reference-ui .recovery-export-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin-top:14px; }
+.reference-ui .recovery-export-grid > div { display:grid; align-content:start; gap:8px; padding:16px; border:1px solid var(--line); border-radius:13px; }
+.reference-ui .recovery-export-grid button { justify-self:start; }
+.reference-ui .recovery-deleted { border:1px solid var(--line); border-radius:13px; }
+.reference-ui .recovery-deleted > summary { cursor:pointer; list-style:none; display:flex; align-items:center; gap:12px; min-height:58px; }
+.reference-ui .recovery-deleted > summary::-webkit-details-marker { display:none; }
+.reference-ui .recovery-deleted > summary .recovery-deleted-label { display:grid; gap:3px; flex:1; }
+.reference-ui .recovery-deleted > summary b { color:var(--ink); font-size:17px; }
+.reference-ui .recovery-deleted > summary small { color:var(--slate); font-size:13px; font-weight:400; }
+.reference-ui .recovery-deleted > summary .item-chevron { margin-left:auto; font-size:22px; }
+.reference-ui .recovery-deleted[open] > summary { margin-bottom:14px; }
+.reference-ui .recovery-deleted-content { border-top:1px solid var(--line); padding-top:14px; }
+.reference-ui .recovery-deleted[open] > summary .item-chevron { transform:rotate(90deg); }
+.reference-ui[data-page="transactions"] #content details > summary :is(.item-chevron,.tools-chevron,.safe-chevron) { display:none!important; }
+.reference-ui[data-page="transactions"] #content details > summary::after { content:none!important; display:none!important; }
+.reference-ui .recovery-import-notes { margin-top:14px; }
+@media(max-width:600px) { .reference-ui .recovery-export-grid { grid-template-columns:1fr; } .reference-ui .recovery-backup-action,.reference-ui .recovery-history { align-items:flex-start; flex-direction:column; } }
+
+/* Give the Email Preferences action breathing room below the report toggles. */
+.reference-ui[data-page="settings"] #content [data-action="reviewEmail"] { margin-top:12px; }
+
+/* 0.9.151 targeted polish corrections. */
+.reference-ui[data-page="debt"] .debt-group-title > span{font-weight:400!important}
+.reference-ui[data-page="settings"] .settings-stack{gap:8px!important}
+.reference-ui[data-page="settings"] #content > .section.card + .section.card{margin-top:8px!important}
+.reference-ui[data-page="recurring"] .row > .actions{margin-top:12px!important}
+
+/* 0.9.152 — Dismissed Recurring Bills action clearance.
+   The first dismissed row sits immediately after the summary divider; give the
+   entire row enough top clearance so Dismiss Permanently cannot touch the line. */
+.reference-ui .dismissed-recurring > summary + .row {
+  margin-top: 16px !important;
+  padding-top: 0 !important;
+}

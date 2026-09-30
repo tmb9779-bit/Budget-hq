@@ -1,0 +1,8 @@
+/* 0.8.5: popup hierarchy and compact desktop navigation. */
+.reference-ui .cash-accounts-dialog .amount{font-weight:400}
+.reference-ui .forecast-buffer-alert{display:grid;grid-template-columns:42px minmax(0,1fr) auto;align-items:center;gap:12px;margin-top:16px;padding:13px;border:1px solid #f0d4dc;border-radius:12px;background:#fff3f5}
+.reference-ui .forecast-buffer-alert .icon-badge{width:38px;height:38px}
+.reference-ui .forecast-buffer-alert strong{display:block;font-size:14px;color:var(--red-ink)}
+.reference-ui .forecast-buffer-alert small{display:block;margin-top:3px;color:var(--slate);line-height:1.4}
+.reference-ui .forecast-buffer-alert .secondary{border:0;background:var(--red);color:var(--red-ink);white-space:nowrap}
+@media(min-width:981px){.reference-ui .nav .ico,.reference-ui .nav .ico .ui-icon{width:24px;height:24px}.reference-ui .nav button{gap:18px}}

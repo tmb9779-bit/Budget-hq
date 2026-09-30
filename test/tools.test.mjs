@@ -1,0 +1,33 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {fresh,change,summary} from '../server/model.mjs';
+import {activityTotals,round} from '../analysis.js';
+import {attentionItems,reviewState} from '../workflow.js';
+import {filterTransactions,periods,reportData,periodInsights,reviewQueue,total,transactionStyle,accountGroup} from '../tools-data.js';
+const day='2026-09-15';
+function fixture(){let b=fresh();const put=(action,data)=>b=change(b,action,data,day);put('account',{name:'Cash',kind:'cash',openingBalance:3000,balanceDate:'2026-01-01'});put('account',{name:'Savings',kind:'cash',openingBalance:1000,balanceDate:'2026-01-01'});put('account',{name:'Card',kind:'credit',openingBalance:500,balanceDate:'2026-01-01'});const cash=b.accounts[0].id,savings=b.accounts[1].id,card=b.accounts[2].id;const tx=(name,amount,category='Shopping',direction='Outflow',accountId=cash,date=day)=>{put('transaction',{name,amount,category,direction,accountId,date});return b.transactions.at(-1).id;};tx('Work',1000,'Income','Inflow');tx('Groceries',60,'Groceries');tx('Card purchase',90,'Shopping','Outflow',card);tx('Refund',20,'Shopping','Inflow');tx('Older food',30,'Groceries','Outflow',cash,'2026-08-01');const id=tx('Card paid',100,'Other');put('payment',{debtId:card,fundingId:cash,transactionId:id,amount:100,principal:90,date:day});put('payment',{debtId:card,fundingId:cash,amount:50,principal:45,date:day});tx('Other debt payment',25,'Debt payment');put('transaction',{name:'Transfer',amount:200,accountId:cash,toAccountId:savings,date:day,direction:'Outflow'});put('reconcile',{id:cash,balance:3500});tx('Possible duplicate',10);tx('Possible duplicate',10);return b;}
+test('Tools report totals and every breakdown reconcile with existing ledger reports',()=>{const b=fixture(),s=summary(b,day),before=JSON.stringify(b);for(const period of ['2026-09','2026-08','2026']){const r=reportData(b,s,period),base=activityTotals(b,s,r.start,r.end);for(const k of ['income','spending','payments','net','recordCount','withheld'])assert.equal(r[k],base[k],k);assert.equal(total(r.incomeRows),r.income);assert.equal(total(r.spendingRows),r.spending);assert.equal(total(r.paymentRows),r.payments);assert.equal(total(r.categories),r.spending);assert.equal(round(r.cashIncome-r.cashSpending-r.cashPayments),r.net);for(const c of r.heatmap)assert.equal(round(c.months.reduce((n,x)=>n+x,0)),c.amount);}const r=reportData(b,s,'2026-09');assert.equal(r.income,1000);assert.equal(r.spending,150);assert.equal(r.payments,175);assert.equal(r.net,785);assert.equal(r.withheld,2);assert.equal(r.paymentRows.length,3);assert.equal(JSON.stringify(b),before);});
+test('transaction filters intersect without hiding transfers to a selected account',()=>{const b=fixture(),cash=b.accounts[0].id,savings=b.accounts[1].id;assert.equal(filterTransactions(b,{account:savings})[0].name,'Transfer');const groceries=b.transactions.find(t=>t.name==='Groceries');assert.deepEqual(filterTransactions(b,{month:'2026-09',account:cash,category:'Groceries',q:'GROCERIES',ids:[groceries.id]}).map(t=>t.id),[groceries.id]);assert.equal(filterTransactions(b,{month:'2026-08',q:'groceries'}).length,0);assert.equal(filterTransactions(b,{ids:[]}).length,0);assert.equal(filterTransactions(b,{q:'savings'})[0].name,'Transfer');});
+test('period controls include recorded months and exclude malformed and future months',()=>{const b=fixture();b.transactions.push({date:'garbage'},{date:'2027-01-01'},{date:'2026-13-01'});assert.deepEqual(periods(b,day),['2026-09','2026-08']);});
+test('Tools review badge agrees with Home record tasks and excludes account confirmations',()=>{const b=fixture();b.accounts[0].verified=false;b.transactions.push({id:'uncat',name:'Uncategorized',date:day,amount:9,direction:'Outflow',accountId:b.accounts[0].id,category:'Other'});b.reviewTransactions=[{id:'import'}];const r=reviewQueue(b),home=attentionItems(b,summary(b,day));assert.ok(!home.some(x=>['records','uncategorized'].includes(x.key)));assert.equal(r.count,3);assert.equal(reviewState(b).count,r.count+1);});
+test('insight snooze and restore are persistent and do not change transactions',()=>{let b=fixture(),s=summary(b,day);const card=periodInsights(b,s,'2026-09').cards.find(c=>c.kind==='category');assert.ok(card);const transactions=JSON.stringify(b.transactions);b=change(b,'insightState',{id:card.id,status:'snoozed',until:'2026-09-22'},day);assert.ok(periodInsights(b,s,'2026-09').hidden.some(c=>c.id===card.id));assert.ok(periodInsights(b,{...s,asOf:'2026-09-23'},'2026-09').visible.some(c=>c.id===card.id));b=change(b,'insightState',{id:card.id,status:'reset'},day);assert.ok(periodInsights(b,s,'2026-09').visible.some(c=>c.id===card.id));assert.equal(JSON.stringify(b.transactions),transactions);});
+
+test('transactions group by bank or lender, with balance updates on their own',()=>{
+ const b=fixture(),cash=b.accounts[0].id;
+ const corrected=change(b,'confirmBalance',{id:cash,balance:1},day);
+ const balanceOnly=filterTransactions(corrected,{kind:'balance'});
+ assert.ok(balanceOnly.length&&balanceOnly.every(t=>t.adjustment),'balance view shows only balance corrections');
+ assert.ok(filterTransactions(corrected,{}).length>balanceOnly.length,'All Transactions still shows everything');
+ assert.deepEqual(transactionStyle('Balance correction'),['difference','gray'],'balance updates are not drawn as Other');
+ // Accounts at one institution read together; an account with no institution keeps its own name.
+ const grouped={...corrected,accounts:corrected.accounts.map((a,i)=>({...a,institution:i===0?'Scott Credit Union':''}))};
+ grouped.accounts.push({id:'loan1',name:'Student Loan',kind:'loan',institution:'Scott Credit Union',active:true,openingBalance:900,balanceDate:'2026-01-01'},
+  {id:'loan2',name:'Auto Loan',kind:'loan',institution:'Quiksilver',active:true,openingBalance:9000,balanceDate:'2026-01-01'});
+ grouped.transactions=[...grouped.transactions,{id:'sl',date:day,name:'Loan fee',amount:25,direction:'Outflow',accountId:'loan1'},{id:'al',date:day,name:'Auto fee',amount:15,direction:'Outflow',accountId:'loan2'}];
+ assert.equal(accountGroup(grouped.accounts[0]),'Scott Credit Union');
+ assert.equal(accountGroup(grouped.accounts[1]),grouped.accounts[1].name,'no institution: stands alone under its own name');
+ const scu=filterTransactions(grouped,{institution:'Scott Credit Union'});
+ assert.ok(scu.some(t=>t.id==='sl'),'the student loan reads under its credit union');
+ assert.ok(!scu.some(t=>t.id==='al'),'the auto loan does not');
+ assert.deepEqual(filterTransactions(grouped,{institution:'Quiksilver'}).map(t=>t.id),['al']);
+});

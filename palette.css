@@ -1,0 +1,312 @@
+/* Budget HQ 0.8.1 — approved palette. Layout, typography, spacing and radii remain in the original stylesheets. */
+:root,.reference-ui{--ink:#142D4E;--slate:#62748D;--muted:#62748D;--cream:#F7F4EE;--paper:#FFFFFF;--line:#DFE5EE;--tools-border:#DFE5EE;--tools-muted:#62748D;
+--blue-ink:#2970A9;--blue:#E5F1FC;
+--mint-ink:#187761;--mint:#E3F4EC;
+--lav-ink:#7050A5;--lav:#EDE6FA;
+--rose-ink:#B04463;--rose:#FBE7EB;
+--gold-ink:#9B6813;--gold:#FFF2D3;
+--peach-ink:#AE5E32;--peach:#FCEDDF;
+--red-ink:#BC3249;--red:#FCE7EA;
+--slate-ink:#62748D;--slate-bg:#EBF0F5;
+--gray-ink:#6B7280;--gray:#EDEFF1;
+--leaf-ink:#367E41;--leaf:#EAF6E6;
+--indigo-ink:#495CB2;--indigo:#E8ECFB;
+--teal-ink:#1F807C;--teal:#E2F3F1;
+--denim-ink:#4F6A8B;--denim:#E7ECF4;
+--terracotta-ink:#AE522F;--terracotta:#F8E6DC;
+--sky-ink:#2B89A9;--sky:#E3F4FA;
+--plum-ink:#825276;--plum:#F3E8EF;
+--periwinkle-ink:#5567B3;--periwinkle:#E9ECFC;
+--coral-ink:#B94551;--coral:#FBE3E4;
+--ochre-ink:#9B6813;--ochre:#FFEECE;
+--pumpkin-ink:#B14F13;--pumpkin:#FFE8D6;
+--brown-ink:#77533D;--brown:#EFE6DC;
+--evergreen-ink:#23634D;--evergreen:#DEF0E7;
+--category-rose-ink:var(--rose-ink);--category-rose-bg:var(--rose);}
+body.reference-ui{background:radial-gradient(circle at 8% -10%,#fff 0,transparent 36%),var(--cream);color:var(--ink)}
+.reference-ui :is(.sidebar,.card,.modal,.tools-card,.tools-tabs,.quick-actions-card,.attention-section){background-color:var(--paper);border-color:var(--line)}
+.reference-ui :is(h1,h2,h3,.page-title,.section-head h2,.kpi .label,.kpi .value,.tools-metric strong){color:var(--ink)}
+.reference-ui :is(.subtitle,.muted,.sidebar-footer,.tools-note,.expense-date,.tools-date,.item-copy small,.dialog-account small,.tools-control,.tools-empty){color:var(--slate)}
+.reference-ui .kpis small{color:var(--slate)!important}
+.reference-ui :is(.nav .ico,.tool-links .ico,.bottom-nav .ico){color:var(--blue-ink)}
+.reference-ui :is(.nav button.active,#tool-links button[aria-current=page],.tools-tab.active){background:var(--blue);color:var(--blue-ink)}
+.reference-ui :is(.nav button,.tool-links button):hover{background:var(--blue)}
+.reference-ui .settings-tabs button{color:var(--slate)}
+.reference-ui .settings-tabs button[aria-selected=true]{color:var(--blue-ink);border-color:var(--blue-ink)}
+.reference-ui .refresh-icon{color:var(--blue-ink);background:transparent}
+.reference-ui .profile{color:var(--slate);background:var(--slate-bg)}
+.reference-ui .profile .ui-icon{fill:none;stroke:var(--slate-ink)}
+.reference-ui .desktop-search{color:var(--slate);border-color:var(--line);background:var(--paper)}
+.reference-ui .desktop-search .ui-icon{color:var(--blue-ink)}
+.reference-ui .timeline-divider{background:var(--line)}
+.reference-ui .timeline-item.income .timeline-divider{background:var(--mint)}
+.reference-ui :is(.timeline-item .item-options,.item-options,.allocation-body){background:transparent}
+.reference-ui :is(.timeline-summary,.unified-item-summary,.reference-debt-row,.need-direct,.payment-direct,.selected-event):hover{background-color:var(--blue)}
+.reference-ui :is(.timeline-item[open]>.timeline-summary,.unified-item[open]>.unified-item-summary){background-color:var(--blue)}
+
+.reference-ui .tone-blue{--icon-paper:var(--blue);color:var(--blue-ink)!important;background:var(--blue)!important}
+.reference-ui .gradient-blue{background:linear-gradient(115deg,var(--paper),var(--blue))!important}
+.reference-ui .tone-mint{--icon-paper:var(--mint);color:var(--mint-ink)!important;background:var(--mint)!important}
+.reference-ui .gradient-mint{background:linear-gradient(115deg,var(--paper),var(--mint))!important}
+.reference-ui .tone-lav{--icon-paper:var(--lav);color:var(--lav-ink)!important;background:var(--lav)!important}
+.reference-ui .gradient-lav{background:linear-gradient(115deg,var(--paper),var(--lav))!important}
+.reference-ui .tone-rose{--icon-paper:var(--rose);color:var(--rose-ink)!important;background:var(--rose)!important}
+.reference-ui .gradient-rose{background:linear-gradient(115deg,var(--paper),var(--rose))!important}
+.reference-ui .tone-gold{--icon-paper:var(--gold);color:var(--gold-ink)!important;background:var(--gold)!important}
+.reference-ui .gradient-gold{background:linear-gradient(115deg,var(--paper),var(--gold))!important}
+.reference-ui .tone-peach{--icon-paper:var(--peach);color:var(--peach-ink)!important;background:var(--peach)!important}
+.reference-ui .gradient-peach{background:linear-gradient(115deg,var(--paper),var(--peach))!important}
+.reference-ui .tone-red{--icon-paper:var(--red);color:var(--red-ink)!important;background:var(--red)!important}
+.reference-ui .gradient-red{background:linear-gradient(115deg,var(--paper),var(--red))!important}
+.reference-ui .tone-slate{--icon-paper:var(--slate-bg);color:var(--slate-ink)!important;background:var(--slate-bg)!important}
+.reference-ui .gradient-slate{background:linear-gradient(115deg,var(--paper),var(--slate-bg))!important}
+.reference-ui .tone-gray{--icon-paper:var(--gray);color:var(--gray-ink)!important;background:var(--gray)!important}
+.reference-ui .gradient-gray{background:linear-gradient(115deg,var(--paper),var(--gray))!important}
+.reference-ui .tone-leaf{--icon-paper:var(--leaf);color:var(--leaf-ink)!important;background:var(--leaf)!important}
+.reference-ui .gradient-leaf{background:linear-gradient(115deg,var(--paper),var(--leaf))!important}
+.reference-ui .tone-indigo{--icon-paper:var(--indigo);color:var(--indigo-ink)!important;background:var(--indigo)!important}
+.reference-ui .gradient-indigo{background:linear-gradient(115deg,var(--paper),var(--indigo))!important}
+.reference-ui .tone-teal{--icon-paper:var(--teal);color:var(--teal-ink)!important;background:var(--teal)!important}
+.reference-ui .gradient-teal{background:linear-gradient(115deg,var(--paper),var(--teal))!important}
+.reference-ui .tone-denim{--icon-paper:var(--denim);color:var(--denim-ink)!important;background:var(--denim)!important}
+.reference-ui .gradient-denim{background:linear-gradient(115deg,var(--paper),var(--denim))!important}
+.reference-ui .tone-terracotta{--icon-paper:var(--terracotta);color:var(--terracotta-ink)!important;background:var(--terracotta)!important}
+.reference-ui .gradient-terracotta{background:linear-gradient(115deg,var(--paper),var(--terracotta))!important}
+.reference-ui .tone-sky{--icon-paper:var(--sky);color:var(--sky-ink)!important;background:var(--sky)!important}
+.reference-ui .gradient-sky{background:linear-gradient(115deg,var(--paper),var(--sky))!important}
+.reference-ui .tone-plum{--icon-paper:var(--plum);color:var(--plum-ink)!important;background:var(--plum)!important}
+.reference-ui .gradient-plum{background:linear-gradient(115deg,var(--paper),var(--plum))!important}
+.reference-ui .tone-periwinkle{--icon-paper:var(--periwinkle);color:var(--periwinkle-ink)!important;background:var(--periwinkle)!important}
+.reference-ui .gradient-periwinkle{background:linear-gradient(115deg,var(--paper),var(--periwinkle))!important}
+.reference-ui .tone-coral{--icon-paper:var(--coral);color:var(--coral-ink)!important;background:var(--coral)!important}
+.reference-ui .gradient-coral{background:linear-gradient(115deg,var(--paper),var(--coral))!important}
+.reference-ui .tone-ochre{--icon-paper:var(--ochre);color:var(--ochre-ink)!important;background:var(--ochre)!important}
+.reference-ui .gradient-ochre{background:linear-gradient(115deg,var(--paper),var(--ochre))!important}
+.reference-ui .tone-pumpkin{--icon-paper:var(--pumpkin);color:var(--pumpkin-ink)!important;background:var(--pumpkin)!important}
+.reference-ui .gradient-pumpkin{background:linear-gradient(115deg,var(--paper),var(--pumpkin))!important}
+.reference-ui .tone-brown{--icon-paper:var(--brown);color:var(--brown-ink)!important;background:var(--brown)!important}
+.reference-ui .gradient-brown{background:linear-gradient(115deg,var(--paper),var(--brown))!important}
+.reference-ui .tone-evergreen{--icon-paper:var(--evergreen);color:var(--evergreen-ink)!important;background:var(--evergreen)!important}
+.reference-ui .gradient-evergreen{background:linear-gradient(115deg,var(--paper),var(--evergreen))!important}
+.reference-ui .tone-utility{--icon-paper:var(--expense-utility-bg,var(--gold));color:var(--expense-utility,var(--gold-ink))!important;background:var(--expense-utility-bg,var(--gold))!important}
+.reference-ui .calendar-event-dot.cat-utility{color:var(--expense-utility,var(--gold-ink));background:var(--expense-utility,var(--gold-ink))}
+.reference-ui .gradient-utility{background:linear-gradient(115deg,var(--paper),var(--expense-utility-bg,var(--gold)))!important}
+.reference-ui .tone-grocery{--icon-paper:var(--expense-grocery-bg,var(--leaf));color:var(--expense-grocery,var(--leaf-ink))!important;background:var(--expense-grocery-bg,var(--leaf))!important}
+.reference-ui .calendar-event-dot.cat-grocery{color:var(--expense-grocery,var(--leaf-ink));background:var(--expense-grocery,var(--leaf-ink))}
+.reference-ui .gradient-grocery{background:linear-gradient(115deg,var(--paper),var(--expense-grocery-bg,var(--leaf)))!important}
+.reference-ui .tone-car{--icon-paper:var(--expense-car-bg,var(--terracotta));color:var(--expense-car,var(--terracotta-ink))!important;background:var(--expense-car-bg,var(--terracotta))!important}
+.reference-ui .calendar-event-dot.cat-car{color:var(--expense-car,var(--terracotta-ink));background:var(--expense-car,var(--terracotta-ink))}
+.reference-ui .gradient-car{background:linear-gradient(115deg,var(--paper),var(--expense-car-bg,var(--terracotta)))!important}
+.reference-ui .tone-housing{--icon-paper:var(--expense-housing-bg,var(--denim));color:var(--expense-housing,var(--denim-ink))!important;background:var(--expense-housing-bg,var(--denim))!important}
+.reference-ui .calendar-event-dot.cat-housing{color:var(--expense-housing,var(--denim-ink));background:var(--expense-housing,var(--denim-ink))}
+.reference-ui .gradient-housing{background:linear-gradient(115deg,var(--paper),var(--expense-housing-bg,var(--denim)))!important}
+.reference-ui .tone-medical{--icon-paper:var(--expense-medical-bg,var(--red));color:var(--expense-medical,var(--red-ink))!important;background:var(--expense-medical-bg,var(--red))!important}
+.reference-ui .calendar-event-dot.cat-medical{color:var(--expense-medical,var(--red-ink));background:var(--expense-medical,var(--red-ink))}
+.reference-ui .gradient-medical{background:linear-gradient(115deg,var(--paper),var(--expense-medical-bg,var(--red)))!important}
+.reference-ui .tone-entertainment{--icon-paper:var(--expense-entertainment-bg,var(--lav));color:var(--expense-entertainment,var(--lav-ink))!important;background:var(--expense-entertainment-bg,var(--lav))!important}
+.reference-ui .calendar-event-dot.cat-entertainment{color:var(--expense-entertainment,var(--lav-ink));background:var(--expense-entertainment,var(--lav-ink))}
+.reference-ui .gradient-entertainment{background:linear-gradient(115deg,var(--paper),var(--expense-entertainment-bg,var(--lav)))!important}
+.reference-ui .tone-debt{--icon-paper:var(--expense-debt-bg,var(--indigo));color:var(--expense-debt,var(--indigo-ink))!important;background:var(--expense-debt-bg,var(--indigo))!important}
+.reference-ui .calendar-event-dot.cat-debt{color:var(--expense-debt,var(--indigo-ink));background:var(--expense-debt,var(--indigo-ink))}
+.reference-ui .gradient-debt{background:linear-gradient(115deg,var(--paper),var(--expense-debt-bg,var(--indigo)))!important}
+.reference-ui .tone-other{--icon-paper:var(--expense-other-bg,var(--gray));color:var(--expense-other,var(--gray-ink))!important;background:var(--expense-other-bg,var(--gray))!important}
+.reference-ui .calendar-event-dot.cat-other{color:var(--expense-other,var(--gray-ink));background:var(--expense-other,var(--gray-ink))}
+.reference-ui .gradient-other{background:linear-gradient(115deg,var(--paper),var(--expense-other-bg,var(--gray)))!important}
+.reference-ui .tone-vet{--icon-paper:var(--expense-vet-bg,var(--plum));color:var(--expense-vet,var(--plum-ink))!important;background:var(--expense-vet-bg,var(--plum))!important}
+.reference-ui .calendar-event-dot.cat-vet{color:var(--expense-vet,var(--plum-ink));background:var(--expense-vet,var(--plum-ink))}
+.reference-ui .gradient-vet{background:linear-gradient(115deg,var(--paper),var(--expense-vet-bg,var(--plum)))!important}
+.reference-ui .tone-shopping{--icon-paper:var(--expense-shopping-bg,var(--rose));color:var(--expense-shopping,var(--rose-ink))!important;background:var(--expense-shopping-bg,var(--rose))!important}
+.reference-ui .calendar-event-dot.cat-shopping{color:var(--expense-shopping,var(--rose-ink));background:var(--expense-shopping,var(--rose-ink))}
+.reference-ui .gradient-shopping{background:linear-gradient(115deg,var(--paper),var(--expense-shopping-bg,var(--rose)))!important}
+.reference-ui .tone-travel{--icon-paper:var(--expense-travel-bg,var(--sky));color:var(--expense-travel,var(--sky-ink))!important;background:var(--expense-travel-bg,var(--sky))!important}
+.reference-ui .calendar-event-dot.cat-travel{color:var(--expense-travel,var(--sky-ink));background:var(--expense-travel,var(--sky-ink))}
+.reference-ui .gradient-travel{background:linear-gradient(115deg,var(--paper),var(--expense-travel-bg,var(--sky)))!important}
+.reference-ui .kpi-balance{background:linear-gradient(120deg,var(--paper),var(--mint))!important}
+.reference-ui .kpi-safe{background:linear-gradient(120deg,var(--paper),var(--blue))!important}
+.reference-ui .kpi-safe.safe-positive{background:linear-gradient(120deg,var(--paper),var(--blue))!important}
+.reference-ui .kpi-safe.safe-negative{background:linear-gradient(120deg,var(--paper),var(--blue))!important}
+.reference-ui .kpi-payday{background:linear-gradient(120deg,var(--paper),var(--lav))!important}
+.reference-ui .kpi-health{background:linear-gradient(120deg,var(--paper),var(--peach))!important}
+.reference-ui .reference-plan-top>.kpi:first-child{background:linear-gradient(120deg,var(--paper),var(--peach))!important}
+.reference-ui .reference-plan-top>.kpi:last-child{background:linear-gradient(120deg,var(--paper),var(--gold))!important}
+.reference-ui .reference-goal-top>.kpi:nth-child(1){background:linear-gradient(120deg,var(--paper),var(--rose))!important}
+.reference-ui .reference-goal-top>.kpi:nth-child(2){background:linear-gradient(120deg,var(--paper),var(--mint))!important}
+.reference-ui .reference-goal-top>.kpi:nth-child(3){background:linear-gradient(120deg,var(--paper),var(--gold))!important}
+.reference-ui .debt-top>.kpi:first-child{background:linear-gradient(120deg,var(--paper),var(--indigo))!important}
+.reference-ui .debt-top>.kpi:last-child{background:linear-gradient(120deg,var(--paper),var(--gold))!important}
+.reference-ui .calendar-estimates>.section.card:nth-child(1){background:linear-gradient(120deg,var(--paper),var(--rose))!important}
+.reference-ui .calendar-estimates>.section.card:nth-child(2){background:linear-gradient(120deg,var(--paper),var(--mint))!important}
+.reference-ui .calendar-estimates>.section.card:nth-child(3){background:linear-gradient(120deg,var(--paper),var(--lav))!important}
+.reference-ui .quick-actions button[data-action=need]{background:linear-gradient(135deg,var(--paper),var(--mint))!important;color:var(--mint-ink)!important}
+.reference-ui .quick-actions button[data-action=need] .ui-icon{color:var(--mint-ink)!important}
+.reference-ui .quick-actions button[data-kind=wish]{background:linear-gradient(135deg,var(--paper),var(--rose))!important;color:var(--rose-ink)!important}
+.reference-ui .quick-actions button[data-kind=wish] .ui-icon{color:var(--rose-ink)!important}
+.reference-ui .quick-actions button[data-action=transaction]{background:linear-gradient(135deg,var(--paper),var(--blue))!important;color:var(--blue-ink)!important}
+.reference-ui .quick-actions button[data-action=transaction] .ui-icon{color:var(--blue-ink)!important}
+.reference-ui .quick-actions button[data-action=afford]{background:linear-gradient(135deg,var(--paper),var(--gold))!important;color:var(--gold-ink)!important}
+.reference-ui .quick-actions button[data-action=afford] .ui-icon{color:var(--gold-ink)!important}
+.reference-ui .quick-actions button[data-kind=goal]{background:linear-gradient(135deg,var(--paper),var(--mint))!important;color:var(--mint-ink)!important}
+.reference-ui .quick-actions button[data-kind=goal] .ui-icon{color:var(--mint-ink)!important}
+
+.reference-ui .kpi-health>.icon-badge{color:var(--peach-ink)!important;background:var(--peach)!important}
+.reference-ui .kpi-safe>.icon-badge{color:var(--blue-ink)!important;background:var(--blue)!important}
+.reference-ui .kpi-safe .value,.reference-ui .plan-low strong:not(.negative){color:var(--ink)!important}
+.reference-ui .kpi-safe.safe-negative .value{color:var(--red-ink)!important}
+.reference-ui .desktop-tip{background:linear-gradient(115deg,var(--paper),var(--blue));border-color:var(--line);color:var(--ink)}
+.reference-ui .desktop-tip .icon-badge{background:var(--blue);color:var(--blue-ink)}
+.reference-ui .attention-card{background:linear-gradient(125deg,var(--paper),#FEFEFD);border-color:var(--line)}
+.reference-ui .attention-card p{color:var(--slate)}
+.reference-ui :is(.money-total,.scenario-results){background:var(--slate-bg)}
+.reference-ui .goal-edit,.reference-ui .tools-pill,.reference-ui button.secondary{background:var(--blue);color:var(--blue-ink);border-color:var(--line)}
+.reference-ui .primary,.reference-ui #modal[data-tools-dialog=true] .primary{background:var(--blue-ink);color:white;border-color:var(--blue-ink)}
+.reference-ui .goal-pause,.reference-ui button[data-action=skip]{background:var(--gold);color:var(--gold-ink)}
+.reference-ui :is(.danger,.trash-button,.tools-trash){background:var(--red);color:var(--red-ink);border-color:var(--red)}
+.reference-ui .form-actions button[data-action=close]{background:var(--slate-bg);color:var(--slate-ink)}
+.reference-ui :is(.calendar-controls button,.paycheck-navigation button,.settings-tabs button){background:transparent;border-color:transparent;color:var(--blue-ink)}
+.reference-ui .settings-tabs button[aria-selected=true]{border-color:var(--blue-ink)}
+.reference-ui :is(.modal-head button,.quiet-help){background:transparent;color:var(--slate-ink)}
+.reference-ui #notice.success-toast{background:var(--mint);color:var(--mint-ink);border-color:var(--mint)}
+.reference-ui #notice.success-toast button{background:transparent;color:var(--blue-ink)}
+.reference-ui #notice.error-notice,.reference-ui .error-notice{background:var(--red);color:var(--red-ink);border-color:var(--red)}
+.reference-ui :is(.negative,.red,.error,.amount-negative){color:var(--red-ink)!important}
+.reference-ui .amount-bubble.amount-negative{background:var(--red)!important}
+.reference-ui :is(.positive,.green,.inflow){color:var(--mint-ink)}
+.reference-ui .calendar-event-dot.income{background:var(--mint-ink);color:var(--mint-ink)}
+.reference-ui .calendar-grid .day.today{background:var(--blue);border-color:var(--line)}
+.reference-ui .calendar-grid .day.selected{background:var(--blue);box-shadow:inset 0 0 0 2px var(--blue-ink)}
+.reference-ui .calendar-grid .adjacent-month{background:#F5F7F8;color:var(--slate)}
+.reference-ui :is(input,select,textarea){border-color:var(--line);background-color:var(--paper);color:var(--ink);accent-color:var(--blue-ink)}
+.reference-ui :is(input,select,textarea):focus-visible{outline-color:var(--blue-ink);border-color:var(--blue-ink)}
+.reference-ui .priority-choice:has(input:checked),.reference-ui .date-options label:has(input:checked){background:var(--blue);border-color:var(--blue-ink)}
+.reference-ui .priority-high{color:var(--red-ink)}
+.reference-ui .priority-medium{color:var(--gold-ink)}
+.reference-ui .priority-low{color:var(--leaf-ink)}
+.reference-ui #need-suggestion{background:var(--blue);color:var(--blue-ink)}
+.reference-ui #need-suggestion.negative{background:var(--red);color:var(--red-ink)}
+.reference-ui :is(.forecast-balance,.chart-line){stroke:var(--blue-ink)}
+.reference-ui :is(.forecast-buffer,.buffer-line){stroke:var(--peach-ink)}
+.reference-ui :is(.forecast-shortfall,.forecast-low-label line){stroke:var(--red-ink)}
+.reference-ui :is(.forecast-payday){fill:var(--mint-ink)}
+.reference-ui :is(.forecast-low-dot){fill:var(--red-ink)}
+.reference-ui .forecast-risk-zone{fill:var(--red)}
+.reference-ui .forecast-gridline{stroke:var(--line)}
+.reference-ui .plan-chart text{fill:var(--slate)}
+.reference-ui .forecast-low-label text{fill:var(--ink)}
+.reference-ui .forecast-low-label text[fill="#C4213B"]{fill:var(--red-ink)}
+.reference-ui .forecast-readout:not(:has(.readout-low)){background:var(--blue);color:var(--ink)}
+.reference-ui .forecast-readout:has(.readout-low){background:var(--red);color:var(--red-ink);border-color:var(--red)}
+.reference-ui .forecast-readout:has(.readout-low) :is(.negative,.readout-low){color:var(--red-ink)}
+.reference-ui .low-window .lowest-day{background:var(--red);border-color:var(--red-ink)}
+.reference-ui progress{accent-color:var(--mint-ink);background:var(--slate-bg)}
+.reference-ui progress::-webkit-progress-bar{background:var(--slate-bg)}
+.reference-ui progress::-webkit-progress-value{background:var(--mint-ink)}
+.reference-ui progress::-moz-progress-bar{background:var(--mint-ink)}
+.reference-ui .progress span{background:var(--mint-ink)}
+.reference-ui meter{accent-color:var(--blue-ink)}
+.reference-ui meter::-webkit-meter-optimum-value{background:var(--blue-ink)}
+.reference-ui meter::-moz-meter-bar{background:var(--blue-ink)}
+.reference-ui .reference-debt-group:has([data-icon=credit]) .debt-group-title{color:var(--blue-ink);background:var(--blue)}
+.reference-ui .reference-debt-group:has([data-icon=student]) .debt-group-title{color:var(--lav-ink);background:var(--lav)}
+.reference-ui .reference-debt-group:has([data-icon=car]) .debt-group-title{color:var(--terracotta-ink);background:var(--terracotta)}
+.reference-ui .reference-debt-group:has([data-icon=personalLoan]) .debt-group-title{color:var(--gold-ink);background:var(--gold)}
+.reference-ui .backup-tiles button{background:var(--blue);color:var(--blue-ink)}
+.reference-ui :is(.tools-count,.tools-nav-count){background:var(--blue);color:var(--blue-ink)}
+.reference-ui .tools-options summary{background:var(--blue);color:var(--blue-ink)}
+.reference-ui .tools-heat-cell.heat-0,.reference-ui .heat-none{background:#EDF3F9}
+.reference-ui .tools-heat-cell.heat-1,.reference-ui .heat-low{background:#DAEBFB}
+.reference-ui .tools-heat-cell.heat-2{background:#B3D7F5}
+.reference-ui .tools-heat-cell.heat-3,.reference-ui .heat-medium{background:#71B4E3}
+.reference-ui .tools-heat-cell.heat-4,.reference-ui .heat-high{background:var(--blue-ink)}
+.reference-ui .tools-heat-cell[aria-pressed=true]{border-color:var(--mint-ink)}
+.reference-ui .tools-future{background:var(--slate-bg);color:var(--slate-ink)}
+
+.reference-ui .month-pill.month-1{background:var(--blue)!important;color:var(--blue-ink)!important}
+.reference-ui .month-pill.month-2{background:var(--periwinkle)!important;color:var(--periwinkle-ink)!important}
+.reference-ui .month-pill.month-3{background:var(--leaf)!important;color:var(--leaf-ink)!important}
+.reference-ui .month-pill.month-4{background:var(--lav)!important;color:var(--lav-ink)!important}
+.reference-ui .month-pill.month-5{background:var(--rose)!important;color:var(--rose-ink)!important}
+.reference-ui .month-pill.month-6{background:var(--gold)!important;color:var(--gold-ink)!important}
+.reference-ui .month-pill.month-7{background:var(--coral)!important;color:var(--coral-ink)!important}
+.reference-ui .month-pill.month-8{background:var(--plum)!important;color:var(--plum-ink)!important}
+.reference-ui .month-pill.month-9{background:var(--ochre)!important;color:var(--ochre-ink)!important}
+.reference-ui .month-pill.month-10{background:var(--pumpkin)!important;color:var(--pumpkin-ink)!important}
+.reference-ui .month-pill.month-11{background:var(--brown)!important;color:var(--brown-ink)!important}
+.reference-ui .month-pill.month-12{background:var(--evergreen)!important;color:var(--evergreen-ink)!important}
+
+/* Approved shared control artwork stays within each existing control box. */
+.reference-ui .item-chevron{color:transparent!important;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%2364748B%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m9%205%207%207-7%207%22%2F%3E%3C%2Fsvg%3E");background-repeat:no-repeat;background-position:center;background-size:14px 14px}
+.reference-ui .tools-chevron{color:transparent!important;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%2364748B%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m5%209%207%207%207-7%22%2F%3E%3C%2Fsvg%3E");background-repeat:no-repeat;background-position:center;background-size:14px 14px}
+.reference-ui button[data-action="month"][data-id="-1"],.reference-ui button[data-action="paycheckPrevious"]{color:transparent!important;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%2364748B%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M22%2012H2M9%205l-7%207%207%207%22%2F%3E%3C%2Fsvg%3E");background-repeat:no-repeat;background-position:center;background-size:20px 20px}
+.reference-ui button[data-action="month"][data-id="1"],.reference-ui button[data-action="paycheckNext"]{color:transparent!important;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%2364748B%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M2%2012h20M15%205l7%207-7%207%22%2F%3E%3C%2Fsvg%3E");background-repeat:no-repeat;background-position:center;background-size:20px 20px}
+.reference-ui .quiet-help{color:transparent!important;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%232F6FA3%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2210%22%2F%3E%3Cpath%20d%3D%22M12%2011v7%22%2F%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%227%22%20r%3D%220.4%22%2F%3E%3C%2Fsvg%3E");background-repeat:no-repeat;background-position:center;background-size:16px 16px}
+
+.reference-ui .calendar-grid .day.today:not(.selected){background:var(--paper);border-color:var(--blue-ink)}
+.reference-ui .calendar-grid .day.selected{background:var(--blue);border-color:var(--blue-ink)}
+
+.reference-ui .tone-neutral{--icon-paper:var(--slate-bg);color:var(--ink)!important;background:var(--slate-bg)!important}
+
+body.login{background:var(--cream);color:var(--ink)}
+.login .card{background:var(--paper);border-color:var(--line)}
+.login .primary{background:var(--blue-ink);color:var(--paper);border-color:var(--blue-ink)}
+.login input{background:var(--paper);color:var(--ink);border-color:var(--line)}
+.login input:focus{border-color:var(--blue-ink);outline-color:var(--blue-ink)}
+.login #error{color:var(--red-ink)}
+
+/* Credit utilization follows current balance / limit across browser engines. */
+.reference-ui .credit-utilization progress{accent-color:var(--utilization-color)}
+.reference-ui .credit-utilization progress::-webkit-progress-value{background:var(--utilization-color)}
+.reference-ui .credit-utilization progress::-moz-progress-bar{background:var(--utilization-color)}
+.reference-ui .credit-utilization small{color:var(--utilization-color)}
+
+/* Transaction type colours, 0.9.51. One block per type; custom colours set --expense-<type> at runtime. */
+.reference-ui .tone-groceries{--icon-paper:var(--expense-groceries-bg,var(--leaf));color:var(--expense-groceries,var(--leaf-ink))!important;background:var(--expense-groceries-bg,var(--leaf))!important}
+.reference-ui .calendar-event-dot.cat-groceries{color:var(--expense-groceries,var(--leaf-ink));background:var(--expense-groceries,var(--leaf-ink))}
+.reference-ui .gradient-groceries{background:linear-gradient(115deg,var(--paper),var(--expense-groceries-bg,var(--leaf)))!important}
+.reference-ui .tone-dining-out{--icon-paper:var(--expense-dining-out-bg,var(--peach));color:var(--expense-dining-out,var(--peach-ink))!important;background:var(--expense-dining-out-bg,var(--peach))!important}
+.reference-ui .calendar-event-dot.cat-dining-out{color:var(--expense-dining-out,var(--peach-ink));background:var(--expense-dining-out,var(--peach-ink))}
+.reference-ui .gradient-dining-out{background:linear-gradient(115deg,var(--paper),var(--expense-dining-out-bg,var(--peach)))!important}
+.reference-ui .tone-utilities{--icon-paper:var(--expense-utilities-bg,var(--gold));color:var(--expense-utilities,var(--gold-ink))!important;background:var(--expense-utilities-bg,var(--gold))!important}
+.reference-ui .calendar-event-dot.cat-utilities{color:var(--expense-utilities,var(--gold-ink));background:var(--expense-utilities,var(--gold-ink))}
+.reference-ui .gradient-utilities{background:linear-gradient(115deg,var(--paper),var(--expense-utilities-bg,var(--gold)))!important}
+.reference-ui .tone-transportation{--icon-paper:var(--expense-transportation-bg,var(--terracotta));color:var(--expense-transportation,var(--terracotta-ink))!important;background:var(--expense-transportation-bg,var(--terracotta))!important}
+.reference-ui .calendar-event-dot.cat-transportation{color:var(--expense-transportation,var(--terracotta-ink));background:var(--expense-transportation,var(--terracotta-ink))}
+.reference-ui .gradient-transportation{background:linear-gradient(115deg,var(--paper),var(--expense-transportation-bg,var(--terracotta)))!important}
+.reference-ui .tone-insurance{--icon-paper:var(--expense-insurance-bg,var(--sky));color:var(--expense-insurance,var(--sky-ink))!important;background:var(--expense-insurance-bg,var(--sky))!important}
+.reference-ui .calendar-event-dot.cat-insurance{color:var(--expense-insurance,var(--sky-ink));background:var(--expense-insurance,var(--sky-ink))}
+.reference-ui .gradient-insurance{background:linear-gradient(115deg,var(--paper),var(--expense-insurance-bg,var(--sky)))!important}
+.reference-ui .tone-pets{--icon-paper:var(--expense-pets-bg,var(--plum));color:var(--expense-pets,var(--plum-ink))!important;background:var(--expense-pets-bg,var(--plum))!important}
+.reference-ui .calendar-event-dot.cat-pets{color:var(--expense-pets,var(--plum-ink));background:var(--expense-pets,var(--plum-ink))}
+.reference-ui .gradient-pets{background:linear-gradient(115deg,var(--paper),var(--expense-pets-bg,var(--plum)))!important}
+.reference-ui .tone-personal-care{--icon-paper:var(--expense-personal-care-bg,var(--rose));color:var(--expense-personal-care,var(--rose-ink))!important;background:var(--expense-personal-care-bg,var(--rose))!important}
+.reference-ui .calendar-event-dot.cat-personal-care{color:var(--expense-personal-care,var(--rose-ink));background:var(--expense-personal-care,var(--rose-ink))}
+.reference-ui .gradient-personal-care{background:linear-gradient(115deg,var(--paper),var(--expense-personal-care-bg,var(--rose)))!important}
+.reference-ui .tone-services{--icon-paper:var(--expense-services-bg,var(--denim));color:var(--expense-services,var(--denim-ink))!important;background:var(--expense-services-bg,var(--denim))!important}
+.reference-ui .calendar-event-dot.cat-services{color:var(--expense-services,var(--denim-ink));background:var(--expense-services,var(--denim-ink))}
+.reference-ui .gradient-services{background:linear-gradient(115deg,var(--paper),var(--expense-services-bg,var(--denim)))!important}
+.reference-ui .tone-education{--icon-paper:var(--expense-education-bg,var(--blue));color:var(--expense-education,var(--blue-ink))!important;background:var(--expense-education-bg,var(--blue))!important}
+.reference-ui .calendar-event-dot.cat-education{color:var(--expense-education,var(--blue-ink));background:var(--expense-education,var(--blue-ink))}
+.reference-ui .gradient-education{background:linear-gradient(115deg,var(--paper),var(--expense-education-bg,var(--blue)))!important}
+.reference-ui .tone-home-improvement{--icon-paper:var(--expense-home-improvement-bg,var(--terracotta));color:var(--expense-home-improvement,var(--terracotta-ink))!important;background:var(--expense-home-improvement-bg,var(--terracotta))!important}
+.reference-ui .calendar-event-dot.cat-home-improvement{color:var(--expense-home-improvement,var(--terracotta-ink));background:var(--expense-home-improvement,var(--terracotta-ink))}
+.reference-ui .gradient-home-improvement{background:linear-gradient(115deg,var(--paper),var(--expense-home-improvement-bg,var(--terracotta)))!important}
+.reference-ui .tone-donations{--icon-paper:var(--expense-donations-bg,var(--rose));color:var(--expense-donations,var(--rose-ink))!important;background:var(--expense-donations-bg,var(--rose))!important}
+.reference-ui .calendar-event-dot.cat-donations{color:var(--expense-donations,var(--rose-ink));background:var(--expense-donations,var(--rose-ink))}
+.reference-ui .gradient-donations{background:linear-gradient(115deg,var(--paper),var(--expense-donations-bg,var(--rose)))!important}
+.reference-ui .tone-bank-fees{--icon-paper:var(--expense-bank-fees-bg,var(--gray));color:var(--expense-bank-fees,var(--gray-ink))!important;background:var(--expense-bank-fees-bg,var(--gray))!important}
+.reference-ui .calendar-event-dot.cat-bank-fees{color:var(--expense-bank-fees,var(--gray-ink));background:var(--expense-bank-fees,var(--gray-ink))}
+.reference-ui .gradient-bank-fees{background:linear-gradient(115deg,var(--paper),var(--expense-bank-fees-bg,var(--gray)))!important}
+.reference-ui .tone-taxes{--icon-paper:var(--expense-taxes-bg,var(--gray));color:var(--expense-taxes,var(--gray-ink))!important;background:var(--expense-taxes-bg,var(--gray))!important}
+.reference-ui .calendar-event-dot.cat-taxes{color:var(--expense-taxes,var(--gray-ink));background:var(--expense-taxes,var(--gray-ink))}
+.reference-ui .gradient-taxes{background:linear-gradient(115deg,var(--paper),var(--expense-taxes-bg,var(--gray)))!important}
+.reference-ui .tone-debt-payment{--icon-paper:var(--expense-debt-payment-bg,var(--indigo));color:var(--expense-debt-payment,var(--indigo-ink))!important;background:var(--expense-debt-payment-bg,var(--indigo))!important}
+.reference-ui .calendar-event-dot.cat-debt-payment{color:var(--expense-debt-payment,var(--indigo-ink));background:var(--expense-debt-payment,var(--indigo-ink))}
+.reference-ui .gradient-debt-payment{background:linear-gradient(115deg,var(--paper),var(--expense-debt-payment-bg,var(--indigo)))!important}
+.reference-ui .tone-income{--icon-paper:var(--mint);color:var(--mint-ink)!important;background:var(--mint)!important}
+.reference-ui .tone-transfer{--icon-paper:var(--gray);color:var(--gray-ink)!important;background:var(--gray)!important}
+.reference-ui .calendar-event-dot.cat-income{color:var(--mint-ink);background:var(--mint-ink)}
+.reference-ui .gradient-income{background:linear-gradient(115deg,var(--paper),var(--mint))!important}
+.reference-ui .calendar-event-dot.cat-transfer{color:var(--gray-ink);background:var(--gray-ink)}
+.reference-ui .gradient-transfer{background:linear-gradient(115deg,var(--paper),var(--gray))!important}
+.reference-ui .tone-phone{--icon-paper:var(--expense-phone-bg,#E3F4FA);color:var(--expense-phone,#2B89A9)!important;background:var(--expense-phone-bg,#E3F4FA)!important}
+.reference-ui .calendar-event-dot.cat-phone{color:var(--expense-phone,#2B89A9);background:var(--expense-phone,#2B89A9)}
+.reference-ui .gradient-phone{background:linear-gradient(115deg,var(--paper),var(--expense-phone-bg,#E3F4FA))!important}

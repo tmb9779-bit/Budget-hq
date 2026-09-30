@@ -1,0 +1,73 @@
+/* Requested desktop scale and interaction refinements, 0.8.2. */
+.reference-ui .nav button,.reference-ui .tool-links button{color:#506780}
+.reference-ui .nav button.active{background:linear-gradient(100deg,#e9f4ff,#e7f3ff);color:#062b52}
+.reference-ui .nav .ico,.reference-ui .tool-links .ico{color:inherit;width:31px;height:31px;flex-shrink:0}
+.reference-ui .nav .ico .ui-icon,.reference-ui .tool-links .ico .ui-icon{width:31px;height:31px;stroke-width:1.8}
+.reference-ui .home-side{height:auto;min-height:0;justify-content:flex-start;align-self:start;gap:12px}
+.reference-ui .desktop-tip{margin-top:0;flex-shrink:0;position:static}
+.reference-ui .checkin-controls{display:flex;justify-content:space-between;align-items:center;gap:20px}
+.reference-ui .checkin-controls>button{margin-left:auto}
+.reference-ui .checkin-edit-bills .readonly-activity{grid-template-columns:35px minmax(0,1fr) auto auto}
+.reference-ui #need-suggestion.no-date,.reference-ui #need-suggestion.no-date.negative{background:var(--red)!important;color:var(--red-ink)!important}
+.reference-ui .quick-actions button[data-kind=goal],.reference-ui .reference-goal-top>.kpi:nth-child(2){background:linear-gradient(120deg,var(--paper),var(--lav))!important;color:var(--lav-ink)!important}
+.reference-ui .quick-actions button[data-kind=goal] .ui-icon{color:var(--lav-ink)!important}
+.reference-ui .dialog-done{background:var(--blue)!important;color:var(--blue-ink)!important;border-color:var(--line)}
+.reference-ui .calendar-controls button[data-id="0"]{color:#111!important;background:transparent}
+.reference-ui .calendar-grid .day.today:not(.selected){border-color:var(--line);box-shadow:none;outline:none;background:var(--paper)}
+.reference-ui .calendar-grid .day.selected{box-shadow:none;outline:none;border-color:var(--line);border-radius:12px;background:var(--blue)}
+.reference-ui .calendar-grid .day:hover{background:var(--blue);border-radius:12px}
+.reference-ui .bill-direct{display:grid;grid-template-columns:39px minmax(0,1fr) auto auto;align-items:center;gap:12px;padding:11px 10px;margin:0 -10px;border-radius:12px;border-bottom:1px solid var(--line)}
+.reference-ui .bill-direct small{display:block;color:var(--slate);font-size:12px;margin-top:4px}
+.reference-ui .bill-direct .actions{gap:7px;justify-content:flex-end;flex-wrap:nowrap}
+.reference-ui :is(.bill-direct,.need-direct,.selected-event,.payment-direct):hover{background:var(--blue);border-radius:12px}
+.reference-ui :is(.need-direct,.selected-event,.payment-direct){border-radius:12px;padding:11px 10px;margin:0 -10px;gap:12px}
+.reference-ui .strategy-actions{gap:14px;margin-top:20px;flex-wrap:wrap}
+.reference-ui .buffer-mini-chart svg{display:block;width:100%;max-height:260px;font:12px var(--sans);color:var(--ink)}
+.reference-ui .buffer-mini-chart text{fill:var(--ink)}
+.reference-ui .paycheck-allocation-row{display:grid;grid-template-columns:36px 112px minmax(0,1fr) 76px;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.reference-ui .paycheck-allocation-row .icon-badge{width:34px;height:34px}
+.reference-ui .paycheck-allocation-row .ui-icon{width:21px;height:21px}
+.reference-ui .paycheck-allocation-row .allocation-amount{color:#111;font-size:16px;font-variant-numeric:tabular-nums;text-align:left}
+.reference-ui .paycheck-allocation-row b{font-size:14px;font-weight:600}
+.reference-ui .paycheck-allocation-row small{display:block;font-size:12px;color:var(--slate);margin-top:3px}
+.reference-ui .paycheck-allocation-row .amount-bubble{min-width:0;font-size:13px;padding:6px 9px;text-align:center}
+.reference-ui .before-paycheck{margin:15px 0}
+.reference-ui .paycheck-expected strong{color:#111}
+.reference-ui .payoff-suggestion{display:flex;align-items:flex-start;gap:15px}
+.reference-ui .payoff-suggestion h3{margin:0 0 8px;font-size:18px}
+.reference-ui .payoff-suggestion p{margin:0 0 16px}
+.reference-ui .payoff-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.reference-ui .payoff-summary small{display:block;font-size:12px;color:var(--slate);margin-top:5px}
+.reference-ui .payoff-preview-results{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin:22px 0;padding:18px;background:var(--blue);border-radius:14px}
+.reference-ui .payoff-preview-results strong{display:block;font-size:22px;margin-top:9px}
+.reference-ui .payment-history-controls{margin-bottom:12px}
+.reference-ui .payment-view button[aria-pressed=true]{background:var(--indigo);color:var(--indigo-ink);border-color:var(--indigo-ink)}
+.reference-ui .wish-waiting{background:#f4f5f6!important;border-color:#e3e6e9}
+.reference-ui .wish-waiting .photo{filter:saturate(.15);opacity:.68}
+.reference-ui .wish-waiting :is(h3,p,.goal-stats,.positive){color:var(--slate)!important}
+.reference-ui .wish-waiting progress{opacity:.55}
+.reference-ui button .action-icon{width:15px;height:15px;vertical-align:-2px;margin-right:5px}
+@media(min-width:981px){
+ .reference-ui[data-page=calendar] .section-head h2,.reference-ui[data-page=plan] .section-head h2{font-size:20px}
+ .reference-ui[data-page=calendar] .section.card,.reference-ui[data-page=plan] .section.card{padding:15px}
+ .reference-ui .calendar-estimates>.section.card{min-height:112px;grid-template-columns:40px 1fr;grid-template-rows:20px 32px 30px;gap:3px 12px;padding:15px}
+ .reference-ui .calendar-estimates .icon-badge{width:39px;height:39px}
+ .reference-ui .calendar-estimates .ui-icon{width:23px;height:23px}
+ .reference-ui .calendar-estimates .value{font-size:24px}
+ .reference-ui .calendar-toolbar h2{font:600 23px/1.25 var(--sans)}
+ .reference-ui .calendar-card .calendar-grid{grid-auto-rows:minmax(65px,auto)}
+ .reference-ui .calendar-card{padding:15px}
+ .reference-ui[data-page=calendar] .icon-badge,.reference-ui[data-page=plan] .icon-badge{max-width:39px;max-height:39px}
+ .reference-ui[data-page=calendar] .icon-badge .ui-icon,.reference-ui[data-page=plan] .icon-badge .ui-icon{width:23px;height:23px}
+ .reference-ui .reference-plan-top .kpi{min-height:112px;padding:15px;font-size:14px}
+ .reference-ui .reference-plan-top .kpi .value{font-size:24px}
+ .reference-ui :is(.bill-direct,.need-direct,.selected-event){font-size:14px}
+ .reference-ui .paycheck-navigation h3{font-size:18px}
+}
+@media(max-width:700px){
+ .reference-ui .bill-direct{grid-template-columns:34px minmax(0,1fr) auto}
+ .reference-ui .bill-direct .actions{grid-column:2/-1}
+ .reference-ui .paycheck-allocation-row{grid-template-columns:32px 84px minmax(0,1fr) 58px;gap:7px}
+ .reference-ui .paycheck-allocation-row .allocation-amount{font-size:14px}
+ .reference-ui .payoff-summary,.reference-ui .payoff-preview-results{grid-template-columns:1fr}
+}

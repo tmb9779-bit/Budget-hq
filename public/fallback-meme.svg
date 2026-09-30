@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1000" viewBox="0 0 900 1000">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f7eadb"/><stop offset="1" stop-color="#dbeaf4"/></linearGradient></defs>
+  <rect width="900" height="1000" rx="42" fill="url(#g)"/>
+  <text x="450" y="120" text-anchor="middle" font-family="Arial Black,Arial" font-size="68" fill="#11263a">I CAME. I SAW.</text>
+  <text x="450" y="205" text-anchor="middle" font-family="Arial Black,Arial" font-size="68" fill="#11263a">I FORGOT WHY.</text>
+  <text x="450" y="585" text-anchor="middle" font-size="300">🐈</text>
+  <text x="450" y="900" text-anchor="middle" font-family="Arial Black,Arial" font-size="58" fill="#11263a">BACK TO THE OTHER ROOM</text>
+</svg>

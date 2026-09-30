@@ -1,0 +1,20 @@
+{
+  "name": "budget-hq-reference-desktop",
+  "version": "0.9.154",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node server/supervisor.mjs",
+    "sample": "node server/supervisor.mjs --sample",
+    "setup-owner": "node server/setup-owner.mjs",
+    "test": "node --test test/*.test.mjs",
+    "setup-mail": "node server/setup-mail.mjs",
+    "phone": "node server/supervisor.mjs --sample --phone",
+    "start:no-live-restart": "node server/server.mjs",
+    "setup-phone": "node server/setup-phone.mjs",
+    "phone-off": "node server/setup-phone.mjs --off"
+  }
+}

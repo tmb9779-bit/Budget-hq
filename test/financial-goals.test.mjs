@@ -1,0 +1,51 @@
+import {recommendedGoalIdeas} from '../recommended-goals.js';
+import test from 'node:test';import assert from 'node:assert/strict';
+import {fresh,change,summary} from '../server/model.mjs';
+import {essentialMonthly,goalTarget,goalPaydays,financialGoalProgress} from '../financial-goals.js';
+import {savingsPlans} from '../analysis.js';
+const date='2026-09-17';
+function fixture(){let b=fresh();b=change(b,'account',{name:'Cash',kind:'cash',openingBalance:5000,balanceDate:date},date);b=change(b,'account',{name:'Card',kind:'credit',openingBalance:1000,balanceDate:date,limit:2000},date);return b;}
+test('debt milestone changes no cash reserve or balance and follows corrections',()=>{let b=fixture(),before=summary(b,date);b=change(b,'goal',{name:'Pay card down',goalType:'debt',debtId:b.accounts[1].id,targetBalance:500,cost:0,saved:0,style:'Pause'},date);let s=summary(b,date);assert.equal(s.cash.balance,before.cash.balance);assert.equal(s.protectedSavings,before.protectedSavings);assert.equal(savingsPlans(b,s).filter(p=>p.list==='goals').length,0);assert.equal(financialGoalProgress(b.goals[0],b,s).percent,0);b=change(b,'reconcile',{id:b.accounts[1].id,balance:750},date);s=summary(b,date);assert.equal(financialGoalProgress(b.goals[0],b,s).percent,50);});
+test('utilization milestone follows balance and credit limit and reaches completion automatically',()=>{let b=fixture();b=change(b,'goal',{name:'Get Card below 25%',goalType:'debt',debtId:b.accounts[1].id,targetBalance:500,targetUtilization:25,cost:0,saved:0,style:'Pause'},date);let p=financialGoalProgress(b.goals[0],b,summary(b,date));assert.equal(p.target,500);assert.equal(p.percent,0);b=change(b,'reconcile',{id:b.accounts[1].id,balance:600},date);p=financialGoalProgress(b.goals[0],b,summary(b,date));assert.equal(p.remaining,100);b.accounts[1].limit=3000;p=financialGoalProgress(b.goals[0],b,summary(b,date));assert.equal(p.target,750);assert.equal(p.status,'Reached');assert.equal(p.percent,100);assert.equal(b.goals[0].saved,0);assert.equal(summary(b,date).protectedSavings,0);});
+test('legacy named utilization milestones use the current limit and disclose a missing limit',()=>{const b=fixture(),g={goalType:'debt',name:'Get to 40% utilization: Card',debtId:b.accounts[1].id,startBalance:1000,targetBalance:800};let p=financialGoalProgress(g,b,summary(b,date));assert.equal(p.target,800);b.accounts[1].limit=3000;p=financialGoalProgress(g,b,summary(b,date));assert.equal(p.target,1200);assert.equal(p.status,'Reached');b.accounts[1].limit=0;p=financialGoalProgress(g,b,summary(b,date));assert.equal(p.status,'Add credit limit');assert.equal(p.remaining,null);});
+test('debt goal progress includes payoff already made before adding the goal',()=>{let b=fixture();b=change(b,'reconcile',{id:b.accounts[1].id,balance:750},date);b=change(b,'goal',{name:'Pay Off Card',goalType:'debt',debtId:b.accounts[1].id,targetBalance:0,cost:0,saved:0,style:'Pause'},date);assert.equal(b.goals[0].startBalance,750);assert.equal(financialGoalProgress(b.goals[0],b,summary(b,date)).percent,25);});
+test('cannot reserve savings in a debt milestone or discard an existing reserve',()=>{let b=fixture();assert.throws(()=>change(b,'goal',{name:'Debt',goalType:'debt',debtId:b.accounts[1].id,cost:100,saved:100},date));b=change(b,'goal',{name:'Saved',cost:1000,saved:100},date);assert.throws(()=>change(b,'goal',{id:b.goals[0].id,name:'Debt',goalType:'debt',debtId:b.accounts[1].id,cost:0,saved:0},date),/Move reserved/);});
+test('emergency target updates with recurring essentials, without creating reserved cash',()=>{const b=fixture();b.bills=[{amount:1000,frequency:'Monthly',category:'Housing'},{amount:60,frequency:'Weekly',category:'Groceries'},{amount:200,frequency:'One-time',category:'Medical'}];assert.equal(essentialMonthly(b),1260);const g={goalType:'emergency',months:3,saved:100,expenseMode:'automatic'};assert.equal(goalTarget(g,b),3780);b.bills[0].amount=1100;assert.equal(goalTarget(g,b),4080);assert.equal(g.saved,100);});
+test('paydays deduplicate dates, respect skips and month-end boundaries',()=>{const b=fixture();b.incomes=[{id:'a',date:'2026-01-31',frequency:'Monthly',verified:true},{id:'b',date:'2026-02-28',frequency:'One-time',verified:true}];assert.deepEqual(goalPaydays(b,'2026-02-01','2026-03-31'),['2026-02-28','2026-03-31']);b.overrides['a@2026-03-31']={status:'Skipped'};assert.deepEqual(goalPaydays(b,'2026-02-01','2026-03-31'),['2026-02-28']);});
+test('deadline divides remaining savings by paydays and rejects overallocated on-track status',()=>{const b=fixture();b.incomes=[{id:'i',date,frequency:'Biweekly',verified:true}];const g={id:'g',cost:1000,saved:200,date:'2026-10-01',goalType:'deadline'},s={...summary(b,date),ready:true};const p=financialGoalProgress(g,b,s,[{id:'g',list:'goals',weekly:400,ready:'2026-10-01',overallocated:true}]);assert.equal(p.required,400);assert.equal(p.status,'Behind');});
+
+test('ten recommendations use real debts and skip goals already added',()=>{
+ const day='2026-09-22';let b=fresh();
+ b=change(b,'account',{name:'SCU Checking',kind:'cash',openingBalance:2000,balanceDate:'2026-01-01'},day);
+ b=change(b,'account',{name:'Capital One',kind:'credit',openingBalance:860,balanceDate:'2026-01-01',limit:3000,payment:45,dueDate:'2026-10-05'},day);
+ b=change(b,'account',{name:'Auto Loan',kind:'loan',openingBalance:14000,balanceDate:'2026-01-01',payment:320,dueDate:'2026-10-10'},day);
+ const suggestions=recommendedGoalIdeas(b,summary(b,day));assert.equal(suggestions.length,10);
+ const debt=suggestions.find(g=>g.type==='debt');assert.ok(debt&&b.accounts.some(a=>a.id===debt.debtId));
+ const withGoal={...b,goals:[{name:debt.name}]};assert.ok(!recommendedGoalIdeas(withGoal,summary(withGoal,day)).some(g=>g.name===debt.name));
+ assert.equal(recommendedGoalIdeas(fresh(),summary(fresh(),day)).length,10);
+});
+test('deleting a goal survives a serialized refresh of the budget',()=>{let b=fixture();b=change(b,'goal',{name:'Save for art',goalType:'deadline',cost:500,saved:0,date:'2026-12-01'},date);const id=b.goals[0].id;b=change(b,'remove',{list:'goals',id},date);const reloaded=JSON.parse(JSON.stringify(b));assert.equal(reloaded.goals.length,0);});
+test('deleting Next Target clears its automatic boost without recreating the goal',()=>{let b=fixture();b=change(b,'wish',{name:'Headphones',cost:250,saved:0},date);b=change(b,'goalFocus',{list:'wishes',id:b.wishes[0].id,mode:'automatic'},date);const base=b.settings.baseAllocations;b=change(b,'remove',{list:'wishes',id:b.wishes[0].id},date);assert.equal(b.settings.priorityTarget,undefined);assert.deepEqual(b.settings.allocations,base);assert.equal(JSON.parse(JSON.stringify(b)).wishes.length,0);});
+test('goal and wish drag order is independent from Next Target and allocation settings',()=>{let b=fixture();for(const name of ['First','Second','Third'])b=change(b,'goal',{name,cost:100,saved:0},date);for(const name of ['Camera','Books'])b=change(b,'wish',{name,cost:100,saved:0},date);b=change(b,'goalFocus',{list:'goals',id:b.goals[0].id,mode:'automatic'},date);const goalIds=b.goals.map(g=>g.id),wishIds=b.wishes.map(g=>g.id),priority=structuredClone(b.settings.priorityTarget),allocations=structuredClone(b.settings.allocations);b=change(b,'reorderTargets',{list:'goals',ids:[goalIds[2],goalIds[0],goalIds[1]]},date);b=change(b,'reorderTargets',{list:'wishes',ids:[wishIds[1],wishIds[0]]},date);const reloaded=JSON.parse(JSON.stringify(b));assert.deepEqual(reloaded.goals.map(g=>g.name),['Third','First','Second']);assert.deepEqual(reloaded.wishes.map(g=>g.name),['Books','Camera']);assert.deepEqual(reloaded.settings.priorityTarget,priority);assert.deepEqual(reloaded.settings.allocations,allocations);assert.throws(()=>change(b,'reorderTargets',{list:'goals',ids:[goalIds[0]]},date),/order changed/);assert.throws(()=>change(b,'reorderTargets',{list:'sinking',ids:[]},date),/listed option/);});
+
+test('savings deadline counts only the paydays Plan actually forecasts',()=>{
+ let b=fixture();b.accounts[1].payment=50;b.accounts[1].dueDate='2026-09-25';b.accounts[1].frequency='Monthly';b=change(b,'settings',{buffer:100,planningConfirmed:true},date);
+ b=change(b,'incomeProfile',{name:'Work',historyName:'Work',amount:800,date:'2026-09-18',frequency:'Biweekly',estimateMode:'conservative'},date);
+ b=change(b,'goal',{name:'Art fund',goalType:'deadline',cost:600,saved:0,date:'2026-10-20'},date);
+ const goal=b.goals[0];let s=summary(b,date),p=financialGoalProgress(goal,b,s);
+ assert.deepEqual(p.dates,[...new Set(s.nextPaychecks.filter(x=>x.date<=goal.date).map(x=>x.date))]);assert.equal(p.required,200);
+ b.settings.forecastIncome='cautious';s=summary(b,date);p=financialGoalProgress(goal,b,s);
+ assert.ok(s.nextPaychecks.length);assert.equal(p.required,200);
+ b.settings.forecastIncome='entered';s=summary(b,date);p=financialGoalProgress(goal,b,s);assert.equal(p.required,200);
+ goal.date='2027-01-01';p=financialGoalProgress(goal,b,s);assert.equal(p.status,'Beyond forecast');assert.equal(p.required,null);
+});
+
+test('recorded debt payment, credit-limit change and payment removal update a utilization goal from live balances',()=>{
+ let b=fixture();b=change(b,'goal',{name:'Card to 25%',goalType:'debt',debtId:b.accounts[1].id,targetUtilization:25,targetBalance:0,cost:0,saved:0,style:'Pause'},date);
+ const goal=b.goals[0],debt=b.accounts[1].id,cash=b.accounts[0].id,initial=summary(b,date);
+ assert.equal(financialGoalProgress(goal,b,initial).remaining,500);
+ b=change(b,'payment',{debtId:debt,amount:200,principal:180,date,fundingId:cash},date);
+ let s=summary(b,date),p=financialGoalProgress(goal,b,s);assert.equal(s.accounts.find(a=>a.id===debt).balance,820);assert.equal(p.remaining,320);assert.equal(s.cash.balance,initial.cash.balance-200);assert.equal(s.protectedSavings,0);
+ const paymentId=b.payments.at(-1).id;b.accounts[1].limit=4000;s=summary(b,date);p=financialGoalProgress(goal,b,s);assert.equal(p.target,1000);assert.equal(p.status,'Reached');
+ b=change(b,'remove',{list:'payments',id:paymentId},date);s=summary(b,date);assert.equal(s.accounts.find(a=>a.id===debt).balance,1000);assert.equal(s.cash.balance,initial.cash.balance);assert.equal(financialGoalProgress(goal,b,s).status,'Reached');
+});

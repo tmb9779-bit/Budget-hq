@@ -1,0 +1,33 @@
+/* Shared tile typography and requested desktop refinements, 0.8.3. */
+.reference-ui :is(.kpi .label,.calendar-estimates .section-head h2,.tools-metric>span>small){font-family:var(--sans)!important;font-size:13px!important;line-height:1.35;font-weight:400;letter-spacing:0}
+.reference-ui :is(.kpi .value,.calendar-estimates .value,.tools-metric>span>strong){font-family:var(--sans)!important;font-size:26px!important;font-weight:650!important;line-height:1.2;letter-spacing:-.025em;font-variant-numeric:tabular-nums}
+.reference-ui :is(.kpi small,.calendar-estimates small ){font-family:var(--sans);font-size:11px!important;font-weight:400;line-height:1.45}
+.reference-ui .kpi:not(button){cursor:default}
+.reference-ui .kpi:not(button):hover{transform:none;box-shadow:var(--shadow)}
+.reference-ui .attention-section{margin-top:16px;margin-bottom:0}
+.reference-ui .attention-section+.home-columns{margin-top:16px}
+.reference-ui .paycheck-allocation-row{grid-template-columns:36px minmax(0,1fr) 112px 76px}
+.reference-ui .paycheck-allocation-row .allocation-amount{font-weight:400;text-align:right;color:var(--ink)}
+.reference-ui .paycheck-expected strong{font-weight:400}
+.reference-ui .before-paycheck>summary{display:flex;align-items:center;gap:12px;padding:12px 0;cursor:pointer;font-size:14px;font-weight:500}
+.reference-ui .before-paycheck>summary>span{margin-left:auto;font-weight:400}
+.reference-ui .before-paycheck>summary .ui-icon{width:16px;height:16px;transition:transform .15s}
+.reference-ui .before-paycheck[open]>summary .ui-icon{transform:rotate(180deg)}
+.reference-ui .before-paycheck>summary::marker{content:''}
+.reference-ui .before-paycheck>summary::-webkit-details-marker{display:none}
+.reference-ui svg[data-icon=trash]{color:var(--red-ink)!important;stroke:var(--red-ink)!important}
+.reference-ui .goal-share-action{margin-top:20px}
+.reference-ui .tool-links button,.reference-ui .tool-links button:hover,.reference-ui #tool-links button[aria-current=page]{background:transparent!important;box-shadow:none}
+.reference-ui .wish-pause-note{font-size:12px;color:var(--slate);margin-bottom:0}
+@media(min-width:981px){
+ .reference-ui .nav{gap:7px}
+ .reference-ui .nav button{min-height:39px;padding:7px 13px;border-radius:13px;gap:20px}
+ .reference-ui .nav .ico,.reference-ui .tool-links .ico,.reference-ui .nav .ico .ui-icon,.reference-ui .tool-links .ico .ui-icon{width:27px;height:27px}
+}
+@media(max-width:700px){
+ .reference-ui .paycheck-allocation-row{grid-template-columns:32px minmax(0,1fr) 84px 58px;gap:7px}
+}
+
+/* 0.8.4: deletion affordance stays red even when its action skips a generated debt occurrence. */
+.reference-ui button.trash-button,.reference-ui button.trash-button:is(:hover,:focus,:active),.reference-ui button.tools-trash{background:var(--red)!important;color:var(--red-ink)!important;border-color:var(--red)!important}
+.reference-ui button.trash-button .ui-icon,.reference-ui button.tools-trash .ui-icon{color:var(--red-ink)!important;stroke:var(--red-ink)!important}

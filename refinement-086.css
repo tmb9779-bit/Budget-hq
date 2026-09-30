@@ -1,0 +1,163 @@
+/* 0.8.6: Safe-to-spend alert badge and Settings organization. */
+.reference-ui .kpi-safe{position:relative}
+.reference-ui .safe-tile-alert{position:absolute;right:13px;top:13px;display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--gold);color:var(--gold-ink)}
+.reference-ui .safe-tile-alert .ui-icon{width:15px;height:15px}
+.reference-ui .settings-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.reference-ui .settings-tile{display:grid;grid-template-columns:42px minmax(0,1fr) 16px;gap:12px;align-items:center;min-height:88px;padding:15px;border:1px solid var(--line);border-radius:14px;background:var(--paper);color:var(--ink);text-align:left}
+.reference-ui .settings-tile:hover{background:var(--blue);border-color:#cfe3f3}
+.reference-ui .settings-tile .icon-badge{width:40px;height:40px}
+.reference-ui .settings-tile b{display:block;font-size:14px;font-weight:600}
+.reference-ui .settings-tile small{display:block;margin-top:3px;color:var(--slate);font-size:12px;line-height:1.35}
+.reference-ui .settings-tile .item-chevron{color:var(--slate);font-size:20px}
+.reference-ui .settings-footer{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:24px;padding-top:16px;border-top:1px solid var(--line);color:var(--slate);font-size:12px}
+@media(max-width:700px){.reference-ui .settings-grid{grid-template-columns:1fr}}
+
+/* Pending Settings refinements. */
+.reference-ui .settings-tabs button,
+.reference-ui .settings-tabs button[aria-selected=true]{color:#000}
+
+/* Expandable Settings panels and recovery lists. */
+.reference-ui .settings-panel-content[hidden]{display:none}
+.reference-ui .settings-panel-content{margin-top:18px}
+.reference-ui .settings-tile[aria-expanded=true]{border-color:var(--blue-ink)}
+.reference-ui .settings-deleted-row{display:grid;grid-template-columns:36px minmax(0,1fr) auto auto;gap:12px;align-items:center;padding:12px 4px;border-bottom:1px solid var(--line)}
+.reference-ui .settings-deleted-row small,.reference-ui .plaid-connection-row small{display:block;font-size:12px;color:var(--slate);margin-top:4px}
+.reference-ui .settings-deleted-row .icon-badge{width:34px;height:34px}
+.reference-ui .settings-deleted-row .actions{margin:0;gap:8px;align-items:center}
+.reference-ui .plaid-session{padding:12px 0;border-bottom:1px solid var(--line)}
+.reference-ui .plaid-connection-row{display:flex;gap:12px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line)}
+.reference-ui .plaid-connection-row>.actions{margin-left:auto}
+
+.reference-ui .settings-tile .item-chevron .ui-icon{width:16px;height:16px}
+/* Compact refresh, matching the regular navigation icon color. */
+.reference-ui .topbar .refresh-icon{width:32px;height:36px;padding:7px;color:#506780}
+.reference-ui .topbar .refresh-icon:hover{color:#062b52}
+.reference-ui .topbar .refresh-icon .ui-icon{width:20px;height:20px}
+.reference-ui .connection-status{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:4px 8px;font-size:12px;font-weight:600;line-height:1.25}
+.reference-ui .connection-status .ui-icon{width:13px;height:13px}
+.reference-ui .connection-connected{color:#24704a;background:#e5f3e9}
+.reference-ui .connection-stale{color:#8c640b;background:#fff3cf}
+.reference-ui .connection-old{color:#9f4f19;background:#ffead6}
+.reference-ui .connection-disconnected{color:#617083;background:#edf0f3}
+.reference-ui .connection-issue{color:#aa3535;background:#fbe9e7}
+.reference-ui .connection-import-note{display:inline-block;margin-left:8px}
+.reference-ui .plaid-connection-row .connection-status{margin-left:10px}
+/* Safe to Spend: simple savings totals inside the two main dropdowns. */
+.reference-ui .safe-savings-row{margin-left:16px}
+.reference-ui .safe-savings-row>strong{font-size:14px;font-weight:400}
+.reference-ui .safe-section>summary .money-line strong:after{content:none}
+.reference-ui .safe-chevron{display:inline-flex;vertical-align:middle;margin-left:8px;color:var(--slate);transform:rotate(-90deg);transition:transform .16s ease}
+.reference-ui .safe-chevron .ui-icon{width:15px;height:15px}
+.reference-ui .safe-section[open]>summary .safe-chevron{transform:rotate(0)}
+.reference-ui .cash-recent{margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}
+.reference-ui .cash-recent h3{margin:0;font-size:15px}
+.reference-ui .cash-recent>p{margin:4px 0 8px;font-size:12px}
+.reference-ui .cash-transaction{padding:8px 0}
+.reference-ui .cash-transaction strong{font-size:13px;font-weight:500}
+.reference-ui .cash-transaction .icon-badge{width:28px;height:28px}
+.reference-ui .cash-transaction .ui-icon{width:18px;height:18px}
+.reference-ui .cash-transaction .amount-bubble{font-size:12px;font-weight:400}
+@media(prefers-reduced-motion:reduce){.reference-ui .safe-chevron{transition:none}}
+.reference-ui .attention-empty{display:flex;align-items:center;gap:12px;min-height:94px;padding:12px 4px;box-sizing:border-box}
+.reference-ui .attention-empty .icon-badge{width:34px;height:34px}
+.reference-ui .attention-empty .ui-icon{width:20px;height:20px}
+.reference-ui .attention-empty strong{font-size:14px;font-weight:600}
+.reference-ui .attention-empty p{font-size:12px;color:var(--slate);margin:4px 0 0}
+/* Compact only the Plan a Need dialog; retain scrolling on short screens. */
+.reference-ui .modal:has(.need-fields) .modal-head{padding:16px 22px 12px;gap:12px}
+.reference-ui .modal:has(.need-fields) .modal-head>.icon-badge{width:40px;height:40px}
+.reference-ui .modal:has(.need-fields) .modal-kicker{margin-top:3px;font-size:12px}
+.reference-ui .modal:has(.need-fields) #modal-body{padding:12px 22px 16px}
+.reference-ui .modal:has(.need-fields) .form{gap:10px}
+.reference-ui .modal .form .need-fields{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:12px}
+.reference-ui .need-fields>fieldset,.reference-ui .need-fields>[data-custom-date]{grid-column:1/-1;min-width:0}
+.reference-ui .need-fields>label{min-width:0}
+.reference-ui .need-fields input:not([type=radio]){min-height:38px;padding:8px 10px;margin-top:4px}
+.reference-ui .need-fields .priority-options legend,.reference-ui .need-fields .date-options legend{margin-bottom:5px}
+.reference-ui .need-fields .priority-choice{padding:7px;gap:6px}
+.reference-ui .need-fields .date-options label{padding:8px 6px;font-size:12px;gap:5px}
+.reference-ui .modal:has(.need-fields) #need-suggestion{margin:0;padding:10px 12px;font-size:15px;line-height:1.4}
+.reference-ui .modal:has(.need-fields) #form-error:empty{display:none}
+.reference-ui .modal:has(.need-fields) .form-actions{padding:10px 0 0;bottom:-16px;gap:12px}
+.reference-ui .modal:has(.need-fields) .form-actions button{padding:10px 14px}
+@media(max-width:500px){.reference-ui .modal .form .need-fields{grid-template-columns:minmax(0,1fr)}}
+/* A shared desktop summary-tile scale from Home through Goals. */
+@media(min-width:981px){
+ .reference-ui :is(.kpis,.reference-plan-top,.debt-top,.reference-goal-top)>.kpi,
+ .reference-ui .calendar-estimates>.section.card{box-sizing:border-box;min-height:120px;height:auto;padding:16px;border-radius:17px}
+ .reference-ui :is(.kpis,.reference-plan-top,.debt-top,.reference-goal-top)>.kpi{display:flex;align-items:center;gap:12px}
+ .reference-ui :is(.kpis,.reference-plan-top,.debt-top,.reference-goal-top)>.kpi>.icon-badge,
+ .reference-ui .calendar-estimates>.section.card>.icon-badge{float:none;width:42px;height:42px;margin:0;flex-shrink:0}
+ .reference-ui :is(.kpis,.reference-plan-top,.debt-top,.reference-goal-top)>.kpi>.icon-badge .ui-icon,
+ .reference-ui .calendar-estimates>.section.card>.icon-badge .ui-icon{width:25px;height:25px}
+ .reference-ui :is(.kpis,.reference-plan-top,.debt-top,.reference-goal-top)>.kpi .kpi-copy{display:block;min-width:0;padding:0}
+ .reference-ui :is(.kpis,.reference-plan-top,.debt-top,.reference-goal-top)>.kpi .value{margin:6px 0 4px;overflow-wrap:anywhere}
+ .reference-ui .calendar-estimates>.section.card{grid-template-columns:42px minmax(0,1fr);grid-template-rows:auto auto auto;gap:4px 12px;align-content:center}
+ .reference-ui .calendar-estimates>.section.card>.icon-badge{grid-column:1;grid-row:1/4;align-self:center}
+ .reference-ui .calendar-estimates .section-head{grid-row:1;height:auto;margin:0}
+ .reference-ui .calendar-estimates .value{grid-row:2;margin:2px 0 0}
+ .reference-ui .calendar-estimates small{grid-row:3;margin:0}
+}
+
+.reference-ui .attention-empty{display:flex;justify-content:center;align-items:center;border:1px dashed var(--line);border-radius:14px;min-height:90px;background:transparent;color:var(--muted);font-size:14px;font-weight:400;padding:20px}
+.reference-ui .bill-frequency-group{border:0;background:transparent;padding:0;margin:12px 0}.reference-ui .bill-frequency-group>summary{padding:14px 0;font-weight:600;cursor:pointer;border-bottom:1px solid var(--line)}
+.reference-ui .header-plaid{border:0;background:transparent;padding:6px;font-size:12px;min-height:36px}.reference-ui .header-plaid .connection-status{margin:0;white-space:nowrap}.reference-ui .header-plaid .ui-icon{width:17px;height:17px}
+
+/* Compact Wish fields and the same priority choices used by Needs. */
+.reference-ui .modal:has(.wish-fields) .form{gap:8px}
+.reference-ui .modal .form .wish-fields{gap:10px}
+.reference-ui .wish-fields>fieldset{grid-column:1/-1;min-width:0}
+.reference-ui .wish-fields .priority-options legend{margin-bottom:5px}
+.reference-ui .wish-fields .priority-choice{display:flex;padding:7px;gap:6px}
+.reference-ui .wish-fields .priority-choice input{width:auto;min-height:0;margin:0;padding:0}
+.reference-ui .modal:has(.wish-fields) .form .wish-section{margin:0;padding:10px 12px}
+.reference-ui .modal:has(.wish-fields) .form details[open]>summary{margin-bottom:8px}
+
+/* Shared, compact dialog rhythm. */
+.reference-ui .modal .modal-head{padding:16px 22px 12px}
+.reference-ui .modal #modal-body{padding:12px 22px 16px}
+.reference-ui .modal .form{gap:10px}
+.reference-ui .modal .form .fields{gap:10px}
+.reference-ui .modal .form p{margin:4px 0 8px}
+.reference-ui .modal .form :is(input:not([type=radio]):not([type=checkbox]):not([type=file]),select){min-height:38px;padding:8px 10px;margin-top:4px}
+.reference-ui .modal .financial-goal-fields{display:grid;gap:10px}
+.reference-ui .financial-goal-fields [data-goal-part]{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.reference-ui .financial-goal-fields [data-goal-part]>:is(fieldset,p){grid-column:1/-1}
+.reference-ui .financial-goal-fields .priority-options{margin:0;min-width:0}
+.reference-ui .financial-goal-fields .priority-options legend{margin-bottom:5px}
+.reference-ui .financial-goal-fields .priority-choice{display:flex;padding:7px;gap:6px}
+.reference-ui .financial-goal-fields .priority-choice input{width:auto;min-height:0;margin:0;padding:0}
+.reference-ui .safe-running-balance{display:flex;justify-content:space-between;gap:12px;padding:4px 12px 10px;font-size:13px;color:var(--muted);border-bottom:1px solid var(--line)}
+.reference-ui .safe-running-balance strong{white-space:nowrap;color:var(--ink)}
+.reference-ui .safe-running-balance strong.negative{color:var(--red-ink)}
+.reference-ui .cash-recent-transactions{margin:14px 0}
+.reference-ui .cash-recent-transactions h3{margin:0 0 8px}
+.reference-ui .modal #paycheck-plan-content .paycheck-navigation{margin:0;gap:8px}
+.reference-ui .modal #paycheck-plan-content .paycheck-navigation h3{margin:0}
+.reference-ui .modal #paycheck-plan-content .paycheck-expected{margin:4px 0 10px}
+.reference-ui .modal #paycheck-plan-content .paycheck-allocation{margin:8px 0;gap:6px}
+.reference-ui .modal #paycheck-plan-content .paycheck-allocation-row{padding-top:8px;padding-bottom:8px}
+.reference-ui .modal #paycheck-plan-content :is(.allocation-total,.muted){margin:6px 0}
+@media(max-width:540px){.reference-ui .financial-goal-fields [data-goal-part]{grid-template-columns:minmax(0,1fr)}}
+
+/* 0.9.150 polish pass. */
+/* Safe-to-Spend warning now uses the same peach treatment as Protect Your Buffer. */
+.reference-ui .safe-tile-alert{background:var(--peach);color:var(--peach-ink)}
+
+/* Today should have the same line weight as every calendar cell and use the normal blue hover. */
+.reference-ui .calendar-grid .day.today:not(.selected){border-color:var(--line);box-shadow:none;outline:none;background:var(--paper)}
+.reference-ui .calendar-grid .day.today:not(.selected):hover{background:var(--blue);border-color:var(--line);box-shadow:none;outline:none}
+
+/* Debt group totals are informational, not headings. */
+.reference-ui .debt-group-title span{font-weight:400}
+
+/* Income source names match the Income Sources heading weight instead of browser-bold strong. */
+.reference-ui .income-source-copy strong{font-weight:600}
+
+/* Settings tiles: restore the tighter vertical rhythm. */
+.reference-ui[data-page="settings"] .settings-stack{gap:12px}
+.reference-ui[data-page="settings"] #content > .section.card + .section.card{margin-top:12px}
+
+/* Keep recurring suggestion actions clear of the divider above them. */
+.reference-ui[data-page="recurring"] .row .actions,
+.reference-ui[data-page="recurring"] .row > button{margin-top:6px}

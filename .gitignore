@@ -1,0 +1,14 @@
+node_modules/
+.env
+.env.*
+*.log
+data/
+private/
+secrets/
+backups/
+*.db
+*.sqlite
+*.sqlite3
+*.key
+*.pem
+*.vault

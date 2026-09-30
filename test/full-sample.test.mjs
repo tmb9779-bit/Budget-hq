@@ -1,0 +1,21 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {fullSampleBudget} from '../server/sample.mjs';
+import {summary,change,addDays} from '../server/model.mjs';
+import {attentionItems,reviewState} from '../workflow.js';
+import {analyzeBudget} from '../analysis.js';
+test('full sample exercises attention, reports, recovery and planning without disabling forecasts',()=>{
+ const day='2026-09-16',b=fullSampleBudget(day),s=summary(b,day),a=analyzeBudget(b,s);
+ assert.equal(b.sampleMode,true);assert.equal(s.ready,true);assert.equal(s.cash.safeToSpend,s.cash.balance-s.protectedSavings-s.cash.bufferTarget-s.protectedBills.reduce((n,e)=>n+e.amount,0));assert.ok(s.cash.minimumCash<s.cash.bufferTarget);
+ assert.deepEqual(attentionItems(b,s).map(x=>x.key),['checkin','buffer','needs']);
+ for(const name of ['accounts','bills','incomes','transactions','payments','needs','wishes','goals','sinking','cooling','decisions','deletedBills'])assert.ok(b[name].length,name);
+ assert.equal(b.accounts.filter(x=>/auto/i.test(x.name)).length,1);
+ assert.ok(b.payments.some(x=>x.transactionId));assert.ok(reviewState(b).duplicates.length);
+ assert.ok(Object.values(b.overrides).some(x=>x.status==='Skipped'));assert.ok(Object.values(b.overrides).some(x=>x.status==='Paid'));
+ assert.ok(Object.keys(a.spending.heatmap).length>=5);assert.ok(a.spending.recurring.some(x=>x.signal==='Price increase'));
+ const p=b.payments.find(x=>x.transactionId),tx=b.transactions.find(x=>x.id===p.transactionId);assert.equal(p.fundingId,'');assert.equal(tx.paymentId,p.id);
+ let resolved=change(b,'checkin',{balancesReviewed:true,billsReviewed:true,incomeReviewed:true,schedule:'same'},day);
+ assert.ok(!attentionItems(resolved,summary(resolved,day)).some(x=>x.key==='checkin'));
+ for(const need of [...resolved.needs])resolved=change(resolved,'need',{...need,mode:'schedule',date:addDays(day,50)},day);
+ assert.ok(!attentionItems(resolved,summary(resolved,day)).some(x=>x.key==='needs'));
+});
